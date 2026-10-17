@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="uk" data-lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rombik Games — ігри для малюків</title>
+<meta name="description" content="П'ятнадцять спокійних ігор для малюків 1–4 років на лісовій галявині з пташкою Pipit. Без реклами, без таймерів, без збору даних. Fifteen calm games for toddlers, no ads.">
+<meta property="og:title" content="Rombik Games">
+<meta property="og:description" content="Спокійні ігри для малюків з пташкою Pipit. Без реклами й таймерів. · Calm games for toddlers with Pipit the bird. No ads, no timers.">
+<meta property="og:image" content="img/home.jpg">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="img/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --sky: #dff2fb; --sky-deep: #a7dcf2; --grass: #6cc05a; --grass-deep: #3f8f3a;
+    --orange: #f3722c; --orange-ink: #b84a10; --sun: #ffcc33;
+    --bg: #fffdf7; --card: #ffffff; --ink: #2a2622; --muted: #6a625a; --line: #ece4d6;
+    --shadow: 0 10px 30px rgba(60, 40, 20, .10);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --sky: #14243a; --sky-deep: #1e3a5c; --grass: #3f8f3a; --grass-deep: #2c6a29;
+      --orange: #ff8a4c; --orange-ink: #ffb78f; --sun: #ffd65c;
+      --bg: #121418; --card: #1c1f25; --ink: #eceae6; --muted: #a9a49c; --line: #2c3038;
+      --shadow: 0 10px 30px rgba(0, 0, 0, .35);
+    }
+  }
+  :root[data-theme="dark"] {
+    --sky: #14243a; --sky-deep: #1e3a5c; --grass: #3f8f3a; --grass-deep: #2c6a29;
+    --orange: #ff8a4c; --orange-ink: #ffb78f; --sun: #ffd65c;
+    --bg: #121418; --card: #1c1f25; --ink: #eceae6; --muted: #a9a49c; --line: #2c3038;
+    --shadow: 0 10px 30px rgba(0, 0, 0, .35);
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0; background: var(--bg); color: var(--ink);
+    font: 17px/1.6 "Nunito", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+  img { max-width: 100%; height: auto; display: block; }
+  a { color: var(--orange-ink); }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 16px; }
+
+  /* One language at a time; the other stays in the page for search engines. */
+  html[data-lang="uk"] [lang="en"], html[data-lang="en"] [lang="uk"] { display: none !important; }
+
+  header.top { display: flex; align-items: center; justify-content: space-between; padding: 16px 0; gap: 12px; }
+  .brand { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 1.15rem; text-decoration: none; color: var(--ink); }
+  .brand img { width: 40px; height: 40px; border-radius: 10px; }
+  .langs { display: flex; gap: 4px; background: var(--card); border: 1px solid var(--line); border-radius: 999px; padding: 3px; }
+  .langs button {
+    font: inherit; font-weight: 700; font-size: .9rem; border: 0; background: none; color: var(--muted);
+    padding: 4px 12px; border-radius: 999px; cursor: pointer;
+  }
+  .langs button[aria-pressed="true"] { background: var(--orange); color: #fff; }
+
+  .hero { background: linear-gradient(var(--sky), var(--bg)); }
+  .hero .wrap { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr); gap: 40px; align-items: center; padding-top: 24px; padding-bottom: 56px; }
+  .hero h1 { font-size: clamp(2rem, 4.5vw, 3.1rem); line-height: 1.12; margin: 0 0 16px; font-weight: 800; }
+  .hero h1 em { font-style: normal; color: var(--orange); }
+  .hero p.lead { font-size: 1.15rem; color: var(--muted); margin: 0 0 24px; }
+  .shot { border-radius: 18px; box-shadow: var(--shadow); border: 4px solid var(--card); }
+  .stores { display: flex; flex-wrap: wrap; gap: 12px; }
+  .store {
+    display: inline-flex; align-items: center; gap: 10px; text-decoration: none;
+    background: var(--ink); color: var(--bg); padding: 10px 18px; border-radius: 12px; font-weight: 700;
+    min-height: 48px;
+  }
+  .store svg { width: 22px; height: 22px; fill: currentColor; flex: none; }
+  .store small { display: block; font-weight: 600; font-size: .72rem; opacity: .8; line-height: 1.1; }
+  .store span { line-height: 1.15; }
+  .note { font-size: .9rem; color: var(--muted); margin-top: 12px; }
+
+  section { padding: 56px 0; }
+  h2 { font-size: clamp(1.5rem, 3vw, 2.1rem); margin: 0 0 8px; font-weight: 800; }
+  .sub { color: var(--muted); margin: 0 0 28px; max-width: 640px; }
+
+  .points { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+  .point { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 20px; }
+  .point .ico { font-size: 1.8rem; line-height: 1; margin-bottom: 8px; }
+  .point h3 { margin: 0 0 4px; font-size: 1.05rem; }
+  .point p { margin: 0; color: var(--muted); font-size: .95rem; }
+
+  .gallery { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+  figure { margin: 0; }
+  figcaption { margin-top: 8px; font-weight: 700; color: var(--muted); }
+
+  .games { display: flex; flex-wrap: wrap; gap: 10px; padding: 0; margin: 0; list-style: none; }
+  .games li { background: var(--card); border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px; font-weight: 600; }
+  .games li.free { border-color: var(--grass); }
+  .games li.soon { border-style: dashed; border-color: var(--orange); color: var(--orange-ink); }
+  .games li.free::after { content: attr(data-free); margin-left: 6px; font-size: .78rem; color: var(--grass-deep); font-weight: 800; }
+
+  .parents { background: var(--card); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .parents ul { margin: 0; padding-left: 20px; display: grid; gap: 8px; max-width: 720px; }
+
+  footer { padding: 32px 0 48px; color: var(--muted); font-size: .95rem; }
+  footer .wrap { display: flex; flex-wrap: wrap; gap: 8px 24px; justify-content: space-between; }
+
+  @media (max-width: 860px) {
+    .hero .wrap { grid-template-columns: 1fr; gap: 28px; padding-bottom: 40px; }
+    .points { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 560px) {
+    body { font-size: 16px; }
+    .points, .gallery { grid-template-columns: 1fr; }
+    section { padding: 40px 0; }
+  }
+</style>
+</head>
+<body>
+
+<header class="wrap top">
+  <a class="brand" href="#"><img src="img/icon.png" alt="" width="40" height="40">Rombik Games</a>
+  <div class="langs" role="group" aria-label="Language / Мова">
+    <button type="button" data-set-lang="uk" aria-pressed="true">UA</button>
+    <button type="button" data-set-lang="en" aria-pressed="false">EN</button>
+  </div>
+</header>
+
+<main>
+  <div class="hero">
+    <div class="wrap">
+      <div>
+        <h1 lang="uk">Спокійні ігри для малюків на <em>лісовій галявині</em></h1>
+        <h1 lang="en">Calm games for toddlers on a <em>forest meadow</em></h1>
+        <p class="lead" lang="uk">П'ятнадцять ігор для дітей 1–4 років разом із пташкою Pipit: форми, розміри, лічба, кольори, пазли й тварини. Без реклами, без таймерів і без програшів.</p>
+        <p class="lead" lang="en">Fifteen games for children aged 1–4 with Pipit the bird: shapes, sizes, counting, colours, puzzles and animals. No ads, no timers and no losing.</p>
+        <div class="stores">
+          <a class="store" href="https://apps.apple.com/us/app/rombik-games/id6821108809">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.37 12.6c-.02-2.2 1.8-3.26 1.88-3.31-1.03-1.5-2.62-1.7-3.18-1.73-1.35-.14-2.65.8-3.33.8-.7 0-1.75-.78-2.88-.76-1.48.02-2.85.86-3.61 2.19-1.55 2.68-.4 6.64 1.1 8.82.74 1.06 1.61 2.25 2.75 2.21 1.11-.05 1.52-.71 2.86-.71 1.33 0 1.71.71 2.88.69 1.19-.02 1.94-1.08 2.66-2.15.85-1.23 1.19-2.43 1.21-2.49-.03-.01-2.32-.89-2.34-3.56zM14.2 6.13c.6-.74 1.01-1.75.9-2.77-.87.04-1.94.59-2.56 1.32-.56.64-1.05 1.69-.92 2.68.97.08 1.97-.49 2.58-1.23z"/></svg>
+            <span><small lang="uk">Завантажити в</small><small lang="en">Download on the</small>App Store</span>
+          </a>
+          <a class="store" href="https://play.google.com/store/apps/details?id=com.rombik.toddlersgame">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.6 2.3c-.2.2-.3.6-.3 1v17.4c0 .4.1.8.3 1l9.7-9.7L3.6 2.3zm10.8 10.8 2.7 2.7-11.3 6.4 8.6-9.1zm0-2.2L5.8 1.8l11.3 6.4-2.7 2.7zm6.2 2.3c.7-.4.7-1.4 0-1.8l-2.4-1.4-3 3 3 3 2.4-1.4z"/></svg>
+            <span><small lang="uk">Доступно в</small><small lang="en">Get it on</small>Google Play</span>
+          </a>
+        </div>
+        <p class="note" lang="uk">Дві ігри безкоштовні назавжди. Решту — і всі нові ігри — відкриває одна покупка, без підписки.</p>
+        <p class="note" lang="en">Two games are free for good. One purchase opens the rest — and every new game — with no subscription.</p>
+      </div>
+      <img class="shot" src="img/home.jpg" width="1748" height="804" alt="The meadow: an oak with a hollow, a mushroom house, an easel and Pipit the bird on a branch">
+    </div>
+  </div>
+
+  <section>
+    <div class="wrap">
+      <h2 lang="uk">Створено для маленьких рук</h2>
+      <h2 lang="en">Made for little hands</h2>
+      <p class="sub" lang="uk">Кожен будиночок на галявині — двері до гри. Читати нічого не треба: великі деталі, прості дотики й перетягування.</p>
+      <p class="sub" lang="en">Every little house on the meadow is a door to a game. Nothing to read: big pieces, simple taps and drags.</p>
+      <div class="points">
+        <div class="point"><div class="ico" aria-hidden="true">🚫</div>
+          <h3 lang="uk">Без реклами</h3><h3 lang="en">No ads</h3>
+          <p lang="uk">Ні банерів, ні відео, ні випадкових переходів.</p><p lang="en">No banners, no videos, no stray taps away.</p></div>
+        <div class="point"><div class="ico" aria-hidden="true">🐢</div>
+          <h3 lang="uk">Без поспіху</h3><h3 lang="en">No rush</h3>
+          <p lang="uk">Немає таймерів і програшів — гра чекає на дитину.</p><p lang="en">No timers and no losing — every game waits for the child.</p></div>
+        <div class="point"><div class="ico" aria-hidden="true">👆</div>
+          <h3 lang="uk">Підказки</h3><h3 lang="en">Gentle hints</h3>
+          <p lang="uk">Якщо малюк завагався, рука-підказка покаже, що робити.</p><p lang="en">If the child hesitates, a see-through hand shows the move.</p></div>
+        <div class="point"><div class="ico" aria-hidden="true">🔒</div>
+          <h3 lang="uk">Нічого не збираємо</h3><h3 lang="en">No data collected</h3>
+          <p lang="uk">Без акаунтів, аналітики й стеження. Працює без інтернету.</p><p lang="en">No accounts, analytics or tracking. Works offline.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top:0">
+    <div class="wrap">
+      <div class="gallery">
+        <figure><img class="shot" src="img/shapes.jpg" width="1748" height="804" loading="lazy" alt="Shapes: a Christmas tree, a ball and a TV under their shadows">
+          <figcaption lang="uk">Форми</figcaption><figcaption lang="en">Shapes</figcaption></figure>
+        <figure><img class="shot" src="img/puzzle.jpg" width="1748" height="804" loading="lazy" alt="Puzzle: four pieces of a cow picture">
+          <figcaption lang="uk">Пазл</figcaption><figcaption lang="en">Puzzle</figcaption></figure>
+        <figure><img class="shot" src="img/feed.jpg" width="1748" height="804" loading="lazy" alt="Feeding: a squirrel, a mouse, a rabbit and a dog with a carrot, a nut, a bone and cheese">
+          <figcaption lang="uk">Нагодуй звірят</figcaption><figcaption lang="en">Feeding</figcaption></figure>
+        <figure><img class="shot" src="img/family.jpg" width="1748" height="804" loading="lazy" alt="Mother and baby: four mothers and their babies">
+          <figcaption lang="uk">Мама і малюк</figcaption><figcaption lang="en">Mother and baby</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2 lang="uk">15 ігор на одній галявині</h2>
+      <h2 lang="en">15 games on one meadow</h2>
+      <p class="sub" lang="uk">У кожній грі кілька галявинок — від найпростішої до трохи складнішої. Ми постійно додаємо нові ігри, і з кожним оновленням на галявині з'являються нові будиночки.</p>
+      <p class="sub" lang="en">Each game has several clearings, from the simplest to a little harder. We keep adding new games, and every update brings new little houses to the meadow.</p>
+      <ul class="games" lang="uk">
+        <li class="free" data-free="безкоштовно">Форми</li><li class="free" data-free="безкоштовно">Розміри</li>
+        <li>Лічба</li><li>Кольори</li><li>Розмальовка</li><li>Урожай</li><li>Збери ціле</li><li>Хованки</li>
+        <li>Нагодуй звірят</li><li>Знайди пару</li><li>Продовж візерунок</li><li>Мама і малюк</li>
+        <li>Помий звірят</li><li>Проведи доріжкою</li><li>Пазл</li>
+        <li class="soon">+ нові ігри незабаром</li>
+      </ul>
+      <ul class="games" lang="en">
+        <li class="free" data-free="free">Shapes</li><li class="free" data-free="free">Sizes</li>
+        <li>Counting</li><li>Colours</li><li>Colouring</li><li>Harvest</li><li>Building</li><li>Hide and seek</li>
+        <li>Feeding</li><li>Find a pair</li><li>Continue the pattern</li><li>Mother and baby</li>
+        <li>Wash the animals</li><li>Lead the way home</li><li>Puzzle</li>
+        <li class="soon">+ new games coming</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="parents">
+    <div class="wrap">
+      <h2 lang="uk">Для батьків</h2>
+      <h2 lang="en">For parents</h2>
+      <ul lang="uk">
+        <li>Дві ігри — «Форми» й «Розміри» — безкоштовні назавжди.</li>
+        <li>Інші тринадцять відкриває одна покупка. Нові ігри ми додаємо постійно — і вони відкриються разом із нею, без доплат.</li>
+        <li>Покупки й налаштування сховані за питанням для дорослих, тож малюк не натрапить на них випадково.</li>
+        <li>Мова — українська або англійська, музику можна вимкнути на сторінці для батьків.</li>
+        <li>Без реклами, акаунтів, аналітики й будь-якого збору даних. Деталі — у <a href="https://vurarddo.github.io/rombik-privacy/">політиці конфіденційності</a>.</li>
+      </ul>
+      <ul lang="en">
+        <li>Two games — Shapes and Sizes — are free for good.</li>
+        <li>One purchase opens the other thirteen. We keep adding new games, and they open with it too, at no extra cost.</li>
+        <li>Purchases and settings sit behind a question for grown-ups, so little ones can't reach them by accident.</li>
+        <li>Ukrainian or English; background music can be switched off on the parents' page.</li>
+        <li>No ads, accounts, analytics or data collection of any kind. Details in the <a href="https://vurarddo.github.io/rombik-privacy/">privacy policy</a>.</li>
+      </ul>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Rombik Games</span>
+    <span>
+      <a href="https://vurarddo.github.io/rombik-privacy/" lang="uk">Політика конфіденційності</a><a href="https://vurarddo.github.io/rombik-privacy/" lang="en">Privacy policy</a>
+      · <a href="mailto:daka.kolp01@gmail.com">daka.kolp01@gmail.com</a>
+    </span>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    var root = document.documentElement;
+    function setLang(lang) {
+      root.setAttribute('data-lang', lang);
+      root.setAttribute('lang', lang);
+      document.querySelectorAll('[data-set-lang]').forEach(function (b) {
+        b.setAttribute('aria-pressed', String(b.getAttribute('data-set-lang') === lang));
+      });
+      try { localStorage.setItem('lang', lang); } catch (e) {}
+    }
+    var saved = null;
+    try { saved = localStorage.getItem('lang'); } catch (e) {}
+    var fromUrl = new URLSearchParams(location.search).get('lang');
+    var browser = (navigator.language || '').toLowerCase().indexOf('uk') === 0 ? 'uk' : 'en';
+    setLang(fromUrl === 'uk' || fromUrl === 'en' ? fromUrl : saved || browser);
+    document.querySelectorAll('[data-set-lang]').forEach(function (b) {
+      b.addEventListener('click', function () { setLang(b.getAttribute('data-set-lang')); });
+    });
+  })();
+</script>
+</body>
+</html>
