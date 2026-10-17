@@ -245,6 +245,7 @@
     function setLang(lang) {
       root.setAttribute('data-lang', lang);
       root.setAttribute('lang', lang);
+      document.title = lang === 'uk' ? 'Rombik Games — ігри для малюків' : 'Rombik Games — games for toddlers';
       document.querySelectorAll('[data-set-lang]').forEach(function (b) {
         b.setAttribute('aria-pressed', String(b.getAttribute('data-set-lang') === lang));
       });
