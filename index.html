@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Rombik — ігри для малюків</title>
+<title>Rombik Games — ігри для малюків</title>
 <meta name="description" content="П'ятнадцять спокійних ігор для малюків 1–4 років на лісовій галявині з пташкою Pipit. Без реклами, без таймерів, без збору даних. Fifteen calm games for toddlers, no ads.">
-<meta property="og:title" content="Rombik">
+<meta property="og:title" content="Rombik Games">
 <meta property="og:description" content="Спокійні ігри для малюків з пташкою Pipit. Без реклами й таймерів. · Calm games for toddlers with Pipit the bird. No ads, no timers.">
 <meta property="og:image" content="img/home.jpg">
 <link rel="icon" type="image/png" href="favicon.png">
@@ -114,7 +114,7 @@
 <body>
 
 <header class="wrap top">
-  <a class="brand" href="#"><img src="img/icon.png" alt="" width="40" height="40">Rombik</a>
+  <a class="brand" href="#"><img src="img/icon.png" alt="" width="40" height="40">Rombik Games</a>
   <div class="langs" role="group" aria-label="Language / Мова">
     <button type="button" data-set-lang="uk" aria-pressed="true">UA</button>
     <button type="button" data-set-lang="en" aria-pressed="false">EN</button>
@@ -235,7 +235,7 @@
 
 <footer>
   <div class="wrap">
-    <span>© 2026 Rombik</span>
+    <span>© 2026 Rombik Games</span>
     <span>
       <a href="privacy/" lang="uk">Політика конфіденційності</a><a href="privacy/" lang="en">Privacy policy</a>
       · <a href="mailto:daka.kolp01@gmail.com">daka.kolp01@gmail.com</a>
@@ -249,7 +249,7 @@
     function setLang(lang) {
       root.setAttribute('data-lang', lang);
       root.setAttribute('lang', lang);
-      document.title = lang === 'uk' ? 'Rombik — ігри для малюків' : 'Rombik — games for toddlers';
+      document.title = lang === 'uk' ? 'Rombik Games — ігри для малюків' : 'Rombik Games — games for toddlers';
       document.querySelectorAll('[data-set-lang]').forEach(function (b) {
         b.setAttribute('aria-pressed', String(b.getAttribute('data-set-lang') === lang));
       });
