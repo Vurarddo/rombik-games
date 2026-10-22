@@ -7,7 +7,13 @@
 <meta name="description" content="П'ятнадцять спокійних ігор для малюків 1–4 років на лісовій галявині з пташкою Pipit. Без реклами, без таймерів, без збору даних. Fifteen calm games for toddlers, no ads.">
 <meta property="og:title" content="Rombik Games">
 <meta property="og:description" content="Спокійні ігри для малюків з пташкою Pipit. Без реклами й таймерів. · Calm games for toddlers with Pipit the bird. No ads, no timers.">
-<meta property="og:image" content="img/home.jpg">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://vurarddo.github.io/rombik-games/">
+<meta property="og:image" content="https://vurarddo.github.io/rombik-games/img/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Pipit the bird on a meadow with an oak, a shape sorter, a workshop, a barn and animals">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="apple-touch-icon" href="img/icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -63,15 +69,10 @@
   .hero h1 em { font-style: normal; color: var(--orange); }
   .hero p.lead { font-size: 1.15rem; color: var(--muted); margin: 0 0 24px; }
   .shot { border-radius: 18px; box-shadow: var(--shadow); border: 4px solid var(--card); }
-  .stores { display: flex; flex-wrap: wrap; gap: 12px; }
-  .store {
-    display: inline-flex; align-items: center; gap: 10px; text-decoration: none;
-    background: var(--ink); color: var(--bg); padding: 10px 18px; border-radius: 12px; font-weight: 700;
-    min-height: 48px;
-  }
-  .store svg { width: 22px; height: 22px; fill: currentColor; flex: none; }
-  .store small { display: block; font-weight: 600; font-size: .72rem; opacity: .8; line-height: 1.1; }
-  .store span { line-height: 1.15; }
+  .stores { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
+  /* The stores' own badges, as their guidelines ask: the same height side by side. */
+  .badge { display: block; line-height: 0; }
+  .badge img { height: 48px; width: auto; }
   .note { font-size: .9rem; color: var(--muted); margin-top: 12px; }
 
   section { padding: 56px 0; }
@@ -130,13 +131,12 @@
         <p class="lead" lang="uk">П'ятнадцять ігор для дітей 1–4 років разом із пташкою Pipit: форми, розміри, лічба, кольори, пазли й тварини. Без реклами, без таймерів і без програшів.</p>
         <p class="lead" lang="en">Fifteen games for children aged 1–4 with Pipit the bird: shapes, sizes, counting, colours, puzzles and animals. No ads, no timers and no losing.</p>
         <div class="stores">
-          <a class="store" href="https://apps.apple.com/us/app/rombik-games/id6821108809">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.37 12.6c-.02-2.2 1.8-3.26 1.88-3.31-1.03-1.5-2.62-1.7-3.18-1.73-1.35-.14-2.65.8-3.33.8-.7 0-1.75-.78-2.88-.76-1.48.02-2.85.86-3.61 2.19-1.55 2.68-.4 6.64 1.1 8.82.74 1.06 1.61 2.25 2.75 2.21 1.11-.05 1.52-.71 2.86-.71 1.33 0 1.71.71 2.88.69 1.19-.02 1.94-1.08 2.66-2.15.85-1.23 1.19-2.43 1.21-2.49-.03-.01-2.32-.89-2.34-3.56zM14.2 6.13c.6-.74 1.01-1.75.9-2.77-.87.04-1.94.59-2.56 1.32-.56.64-1.05 1.69-.92 2.68.97.08 1.97-.49 2.58-1.23z"/></svg>
-            <span><small lang="uk">Завантажити в</small><small lang="en">Download on the</small>App Store</span>
+          <a class="badge" href="https://apps.apple.com/app/id6821108809">
+            <img src="img/app-store-badge.svg" alt="Download on the App Store" width="144" height="48">
           </a>
-          <a class="store" href="https://play.google.com/store/apps/details?id=com.rombik.toddlersgame">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.6 2.3c-.2.2-.3.6-.3 1v17.4c0 .4.1.8.3 1l9.7-9.7L3.6 2.3zm10.8 10.8 2.7 2.7-11.3 6.4 8.6-9.1zm0-2.2L5.8 1.8l11.3 6.4-2.7 2.7zm6.2 2.3c.7-.4.7-1.4 0-1.8l-2.4-1.4-3 3 3 3 2.4-1.4z"/></svg>
-            <span><small lang="uk">Доступно в</small><small lang="en">Get it on</small>Google Play</span>
+          <!-- The referrer tags installs from this page in Play Console's acquisition reports. -->
+          <a class="badge" href="https://play.google.com/store/apps/details?id=com.rombik.toddlersgame&amp;referrer=utm_source%3Drombik-games-site%26utm_medium%3Dlanding">
+            <img src="img/google-play-badge.png" alt="Get it on Google Play" width="161" height="48">
           </a>
         </div>
         <p class="note" lang="uk">Дві ігри безкоштовні назавжди. Решту — і всі нові ігри — відкриває одна покупка, без підписки.</p>
@@ -237,7 +237,8 @@
   <div class="wrap">
     <span>© 2026 Rombik Games</span>
     <span>
-      <a href="privacy/" lang="uk">Політика конфіденційності</a><a href="privacy/" lang="en">Privacy policy</a>
+      <a href="support/" lang="uk">Підтримка</a><a href="support/" lang="en">Support</a>
+      · <a href="privacy/" lang="uk">Політика конфіденційності</a><a href="privacy/" lang="en">Privacy policy</a>
       · <a href="mailto:daka.kolp01@gmail.com">daka.kolp01@gmail.com</a>
     </span>
   </div>

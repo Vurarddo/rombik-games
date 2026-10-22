@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="uk" data-lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rombik Games — Support</title>
+<meta name="description" content="Support for Rombik Games, calm games for toddlers: contact, restoring the purchase, the parents' page, language and music.">
+<link rel="icon" type="image/png" href="../favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  /* The landing page's palette (index.html), light and dark, so both pages look like one site. */
+  :root {
+    --orange: #f3722c; --orange-ink: #b84a10;
+    --bg: #fffdf7; --card: #ffffff; --ink: #2a2622; --muted: #6a625a; --line: #ece4d6;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --orange: #ff8a4c; --orange-ink: #ffb78f;
+      --bg: #121418; --card: #1c1f25; --ink: #eceae6; --muted: #a9a49c; --line: #2c3038;
+    }
+  }
+  :root[data-theme="dark"] {
+    --orange: #ff8a4c; --orange-ink: #ffb78f;
+    --bg: #121418; --card: #1c1f25; --ink: #eceae6; --muted: #a9a49c; --line: #2c3038;
+  }
+  :root { --fg: var(--ink); --accent: var(--orange-ink); }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--fg);
+         font:17px/1.6 "Nunito", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+  main { max-width:760px; margin:0 auto; padding:32px 16px 64px; }
+  /* The same header and language switch as the landing page; one language shows at a time. */
+  html[data-lang="uk"] [lang="en"], html[data-lang="en"] [lang="uk"] { display:none !important; }
+  header.top { display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:24px; }
+  .brand { display:flex; align-items:center; gap:10px; font-weight:800; font-size:1.15rem;
+           text-decoration:none; color:var(--fg); }
+  .brand img { width:40px; height:40px; border-radius:10px; }
+  .langs { display:flex; gap:4px; background:var(--card); border:1px solid var(--line); border-radius:999px; padding:3px; }
+  .langs button { font:inherit; font-weight:700; font-size:.9rem; border:0; background:none; color:var(--muted);
+                  padding:4px 12px; border-radius:999px; cursor:pointer; }
+  .langs button[aria-pressed="true"] { background:var(--orange); color:#fff; }
+  h1 { font-size:1.9rem; line-height:1.25; margin:0 0 4px; font-weight:800; }
+  h2 { font-size:1.15rem; margin:32px 0 8px; font-weight:800; }
+  .meta { color:var(--muted); margin:0 0 24px; }
+  .summary { background:var(--card); border:1px solid var(--line); border-left:4px solid var(--orange);
+             border-radius:10px; padding:16px 20px; }
+  .summary ul { margin:8px 0 0; padding-left:20px; }
+  a { color:var(--accent); }
+  table { width:100%; border-collapse:collapse; font-size:.95rem; }
+  th, td { text-align:left; padding:8px; border-bottom:1px solid var(--line); vertical-align:top; }
+  hr { border:0; border-top:1px solid var(--line); margin:56px 0; }
+  .faq h2 { margin-top:28px; }
+  .contact a { font-weight:800; }
+</style>
+</head>
+<body>
+<main>
+<header class="top">
+  <a class="brand" href="../"><img src="../img/icon.png" alt="" width="40" height="40">Rombik Games</a>
+  <div class="langs" role="group" aria-label="Language / Мова">
+    <button type="button" data-set-lang="uk" aria-pressed="true">UA</button>
+    <button type="button" data-set-lang="en" aria-pressed="false">EN</button>
+  </div>
+</header>
+
+<!-- ============================ ENGLISH ============================ -->
+<section id="en" lang="en" class="faq">
+<h1>Support — Rombik Games</h1>
+<p class="meta">Calm games for toddlers with Pipit the bird.</p>
+
+<div class="summary contact">
+  <strong>Write to us</strong> with any question, an idea or a problem:
+  <ul>
+    <li>E-mail: <a href="mailto:daka.kolp01@gmail.com">daka.kolp01@gmail.com</a></li>
+    <li>Telegram: <a href="https://t.me/darya_kolp">@darya_kolp</a></li>
+  </ul>
+  It helps to say which device you use (iPhone, iPad or Android) and the app's version.
+</div>
+
+<h2>How do I open the parents' page?</h2>
+<p>On the meadow, tap the round gear button in the top-right corner and answer the simple sum for
+grown-ups. The page has the purchase, the language, the music and a link to rate the app.</p>
+
+<h2>How do I open all the games?</h2>
+<p>Shapes and Sizes are free. On the parents' page, tap "Unlock all games" and answer one more sum:
+the store's own payment sheet opens. It is a single purchase with no subscription, and games added
+later open with it too.</p>
+
+<h2>I bought the games, but they are locked on another device</h2>
+<p>Sign in to the same Apple ID or Google account as when buying, open the parents' page and tap
+"Restore purchases". On iPhone and iPad the purchase is also shared with your Family Sharing
+group.</p>
+
+<h2>How do I ask for a refund?</h2>
+<p>Payments are handled by the store, so refunds are too: on the App Store through
+<a href="https://reportaproblem.apple.com">reportaproblem.apple.com</a>, on Google Play through
+<a href="https://support.google.com/googleplay/answer/2479637">Google Play's refund page</a>.</p>
+
+<h2>How do I change the language or turn off the music?</h2>
+<p>Both are on the parents' page: English or Ukrainian, or as on the device, and the background
+music. All sound turns off with the round sound button on the meadow, one tap away.</p>
+
+<h2>How do I switch between day and night?</h2>
+<p>Touch the sun or the moon over the meadow.</p>
+
+<h2>What data does the app collect?</h2>
+<p>None: no accounts, no ads, no analytics, and it works offline. Details are in the
+<a href="../privacy/">privacy policy</a>.</p>
+</section>
+
+<hr>
+
+<!-- ============================ УКРАЇНСЬКА ============================ -->
+<section id="uk" lang="uk" class="faq">
+<h1>Підтримка — Rombik Games</h1>
+<p class="meta">Спокійні ігри для малюків із пташкою Pipit.</p>
+
+<div class="summary contact">
+  <strong>Напишіть нам</strong>, якщо маєте питання, ідею чи проблему:
+  <ul>
+    <li>E-mail: <a href="mailto:daka.kolp01@gmail.com">daka.kolp01@gmail.com</a></li>
+    <li>Telegram: <a href="https://t.me/darya_kolp">@darya_kolp</a></li>
+  </ul>
+  Допоможе, якщо вкажете пристрій (iPhone, iPad чи Android) і версію застосунку.
+</div>
+
+<h2>Як відкрити сторінку для батьків?</h2>
+<p>На галявині торкніться круглої кнопки-шестерні у правому верхньому куті й дайте відповідь на
+простий приклад для дорослих. Там покупка, мова, музика й посилання, щоб оцінити застосунок.</p>
+
+<h2>Як відкрити всі ігри?</h2>
+<p>«Форми» й «Розміри» безкоштовні. На сторінці для батьків натисніть «Відкрити всі ігри» й дайте
+відповідь на ще один приклад — відкриється вікно оплати магазину. Це одна покупка без підписки, і
+нові ігри відкриваються разом із нею.</p>
+
+<h2>Ігри куплено, але на іншому пристрої вони закриті</h2>
+<p>Увійдіть у той самий Apple ID чи обліковий запис Google, що й під час покупки, відкрийте
+сторінку для батьків і натисніть «Відновити покупки». На iPhone та iPad покупкою також можуть
+користуватися учасники вашої групи «Сімейний доступ».</p>
+
+<h2>Як повернути гроші?</h2>
+<p>Оплату обробляє магазин, тож і повернення теж: в App Store — через
+<a href="https://reportaproblem.apple.com">reportaproblem.apple.com</a>, у Google Play — через
+<a href="https://support.google.com/googleplay/answer/2479637">сторінку повернень Google Play</a>.</p>
+
+<h2>Як змінити мову чи вимкнути музику?</h2>
+<p>Усе на сторінці для батьків: українська чи англійська або як на пристрої, а також фонова
+музика. Увесь звук вимикає кругла кнопка звуку на галявині — одним дотиком.</p>
+
+<h2>Як змінити день на ніч?</h2>
+<p>Торкніться сонця чи місяця над галявиною.</p>
+
+<h2>Які дані збирає застосунок?</h2>
+<p>Жодних: без облікових записів, реклами й аналітики, і він працює без інтернету. Деталі — у
+<a href="../privacy/">політиці конфіденційності</a>.</p>
+</section>
+</main>
+<script>
+  (function () {
+    var root = document.documentElement;
+    function setLang(lang) {
+      root.setAttribute('data-lang', lang);
+      root.setAttribute('lang', lang);
+      document.title = lang === 'uk'
+        ? 'Rombik Games — Підтримка'
+        : 'Rombik Games — Support';
+      document.querySelectorAll('[data-set-lang]').forEach(function (b) {
+        b.setAttribute('aria-pressed', String(b.getAttribute('data-set-lang') === lang));
+      });
+      try { localStorage.setItem('lang', lang); } catch (e) {}
+    }
+    var saved = null;
+    try { saved = localStorage.getItem('lang'); } catch (e) {}
+    var fromUrl = new URLSearchParams(location.search).get('lang');
+    // Old links to #en / #uk still pick their language.
+    var fromHash = location.hash === '#uk' || location.hash === '#en' ? location.hash.slice(1) : null;
+    var browser = (navigator.language || '').toLowerCase().indexOf('uk') === 0 ? 'uk' : 'en';
+    setLang(fromUrl === 'uk' || fromUrl === 'en' ? fromUrl : fromHash || saved || browser);
+    document.querySelectorAll('[data-set-lang]').forEach(function (b) {
+      b.addEventListener('click', function () { setLang(b.getAttribute('data-set-lang')); });
+    });
+  })();
+</script>
+</body>
+</html>
