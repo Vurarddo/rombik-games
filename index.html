@@ -70,7 +70,7 @@
   .hero p.lead { font-size: 1.15rem; color: var(--muted); margin: 0 0 24px; }
   .shot { border-radius: 18px; box-shadow: var(--shadow); border: 4px solid var(--card); }
   .stores { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
-  /* The stores' own badges, as their guidelines ask: the same height side by side. */
+  /* The stores' own badges, as their guidelines ask: the same height side by side, in the page's language. */
   .badge { display: block; line-height: 0; }
   .badge img { height: 48px; width: auto; }
   .note { font-size: .9rem; color: var(--muted); margin-top: 12px; }
@@ -132,10 +132,14 @@
         <p class="lead" lang="en">Fifteen games for children aged 1–4 with Pipit the bird: shapes, sizes, counting, colours, puzzles and animals. No ads, no timers and no losing.</p>
         <div class="stores">
           <a class="badge" href="https://apps.apple.com/app/id6821108809">
-            <img src="img/app-store-badge.svg" alt="Download on the App Store" width="144" height="48">
+            <img lang="uk" src="img/app-store-badge-uk.svg" alt="Завантажити в App Store" width="141" height="48">
+            <img lang="en" src="img/app-store-badge.svg" alt="Download on the App Store" width="144" height="48">
           </a>
           <!-- The referrer tags installs from this page in Play Console's acquisition reports. -->
-          <a class="badge" href="https://play.google.com/store/apps/details?id=com.rombik.toddlersgame&amp;referrer=utm_source%3Drombik-games-site%26utm_medium%3Dlanding">
+          <a class="badge" lang="uk" href="https://play.google.com/store/apps/details?id=com.rombik.toddlersgame&amp;referrer=utm_source%3Drombik-games-site%26utm_medium%3Dlanding&amp;hl=uk">
+            <img src="img/google-play-badge-uk.png" alt="Завантажити з Google Play" width="162" height="48">
+          </a>
+          <a class="badge" lang="en" href="https://play.google.com/store/apps/details?id=com.rombik.toddlersgame&amp;referrer=utm_source%3Drombik-games-site%26utm_medium%3Dlanding">
             <img src="img/google-play-badge.png" alt="Get it on Google Play" width="161" height="48">
           </a>
         </div>
