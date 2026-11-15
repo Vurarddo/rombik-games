@@ -54,7 +54,8 @@
   html:not([data-lang="uk"]) [lang="uk"], html:not([data-lang="en"]) [lang="en"], html:not([data-lang="de"]) [lang="de"],
   html:not([data-lang="es"]) [lang="es"], html:not([data-lang="pl"]) [lang="pl"], html:not([data-lang="ru"]) [lang="ru"] { display: none !important; }
 
-  header.top { display: flex; align-items: center; justify-content: space-between; padding: 16px 0; gap: 12px; }
+  /* Top and bottom only: the sides keep the .wrap gutter. */
+  header.top { display: flex; align-items: center; justify-content: space-between; padding-top: 16px; padding-bottom: 16px; gap: 12px; }
   .brand { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 1.15rem; text-decoration: none; color: var(--ink); }
   .brand img { width: 40px; height: 40px; border-radius: 10px; }
   .langs { display: flex; gap: 4px; background: var(--card); border: 1px solid var(--line); border-radius: 999px; padding: 3px; }
