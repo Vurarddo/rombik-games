@@ -51,7 +51,8 @@
   .wrap { max-width: 1080px; margin: 0 auto; padding: 0 16px; }
 
   /* One language at a time; the other stays in the page for search engines. */
-  html:not([data-lang="uk"]) [lang="uk"], html:not([data-lang="en"]) [lang="en"], html:not([data-lang="ru"]) [lang="ru"] { display: none !important; }
+  html:not([data-lang="uk"]) [lang="uk"], html:not([data-lang="en"]) [lang="en"], html:not([data-lang="de"]) [lang="de"],
+  html:not([data-lang="es"]) [lang="es"], html:not([data-lang="pl"]) [lang="pl"], html:not([data-lang="ru"]) [lang="ru"] { display: none !important; }
 
   header.top { display: flex; align-items: center; justify-content: space-between; padding: 16px 0; gap: 12px; }
   .brand { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 1.15rem; text-decoration: none; color: var(--ink); }
@@ -110,15 +111,24 @@
     .points, .gallery { grid-template-columns: 1fr; }
     section { padding: 40px 0; }
   }
+  /* Six languages do not fit beside the name on a phone: the switch moves under it. */
+  .brand { flex-shrink: 0; white-space: nowrap; }
+  @media (max-width: 560px) {
+    header.top { flex-wrap: wrap; }
+    .langs button { padding: 4px 10px; }
+  }
 </style>
 </head>
 <body>
 
 <header class="wrap top">
   <a class="brand" href="#"><img src="img/icon.png" alt="" width="40" height="40">Rombik Games</a>
-  <div class="langs" role="group" aria-label="Language / Мова / Язык">
+  <div class="langs" role="group" aria-label="Language">
     <button type="button" data-set-lang="uk" aria-pressed="true">UA</button>
     <button type="button" data-set-lang="en" aria-pressed="false">EN</button>
+    <button type="button" data-set-lang="de" aria-pressed="false">DE</button>
+    <button type="button" data-set-lang="es" aria-pressed="false">ES</button>
+    <button type="button" data-set-lang="pl" aria-pressed="false">PL</button>
     <button type="button" data-set-lang="ru" aria-pressed="false">RU</button>
   </div>
 </header>
@@ -130,14 +140,23 @@
         <h1 lang="uk">Спокійні ігри для малюків на <em>лісовій галявині</em></h1>
         <h1 lang="en">Calm games for toddlers on a <em>forest meadow</em></h1>
         <h1 lang="ru">Спокойные игры для малышей на <em>лесной поляне</em></h1>
+        <h1 lang="de">Ruhige Spiele für Kleinkinder auf einer <em>Waldwiese</em></h1>
+        <h1 lang="es">Juegos tranquilos para peques en una <em>pradera del bosque</em></h1>
+        <h1 lang="pl">Spokojne gry dla maluchów na <em>leśnej łące</em></h1>
         <p class="lead" lang="uk">П'ятнадцять ігор для дітей 1–4 років разом із пташкою Піпіт: форми, розміри, лічба, кольори, пазли й тварини. Без реклами, без таймерів і без програшів.</p>
         <p class="lead" lang="en">Fifteen games for children aged 1–4 with Pipit the bird: shapes, sizes, counting, colours, puzzles and animals. No ads, no timers and no losing.</p>
         <p class="lead" lang="ru">Пятнадцать игр для детей 1–4 лет вместе с птичкой Пипит: формы, размеры, счёт, цвета, пазлы и животные. Без рекламы, без таймеров и без проигрышей.</p>
+        <p class="lead" lang="de">Fünfzehn Spiele für Kinder von 1–4 Jahren mit Vogel Pipit: Formen, Größen, Zählen, Farben, Puzzles und Tiere. Ohne Werbung, ohne Zeitdruck und ohne Verlieren.</p>
+        <p class="lead" lang="es">Quince juegos para niños de 1 a 4 años con el pajarito Pipit: formas, tamaños, contar, colores, rompecabezas y animales. Sin anuncios, sin cronómetros y sin perder.</p>
+        <p class="lead" lang="pl">Piętnaście gier dla dzieci w wieku 1–4 lat z ptaszkiem Pipitem: kształty, rozmiary, liczenie, kolory, puzzle i zwierzęta. Bez reklam, bez liczników czasu i bez przegrywania.</p>
         <div class="stores">
           <a class="badge" href="https://apps.apple.com/app/id6821108809">
             <img lang="uk" src="img/app-store-badge-uk.svg" alt="Завантажити в App Store" width="141" height="48">
             <img lang="en" src="img/app-store-badge.svg" alt="Download on the App Store" width="144" height="48">
             <img lang="ru" src="img/app-store-badge.svg" alt="Загрузите в App Store" width="144" height="48">
+            <img lang="de" src="img/app-store-badge.svg" alt="Laden im App Store" width="144" height="48">
+            <img lang="es" src="img/app-store-badge.svg" alt="Descargar en el App Store" width="144" height="48">
+            <img lang="pl" src="img/app-store-badge.svg" alt="Pobierz z App Store" width="144" height="48">
           </a>
           <!-- The referrer tags installs from this page in Play Console's acquisition reports. -->
           <a class="badge" lang="uk" href="https://play.google.com/store/apps/details?id=com.rombik.toddlersgame&amp;referrer=utm_source%3Drombik-games-site%26utm_medium%3Dlanding&amp;hl=uk">
@@ -149,10 +168,22 @@
           <a class="badge" lang="ru" href="https://play.google.com/store/apps/details?id=com.rombik.toddlersgame&amp;referrer=utm_source%3Drombik-games-site%26utm_medium%3Dlanding&amp;hl=ru">
             <img src="img/google-play-badge.png" alt="Доступно в Google Play" width="161" height="48">
           </a>
+          <a class="badge" lang="de" href="https://play.google.com/store/apps/details?id=com.rombik.toddlersgame&amp;referrer=utm_source%3Drombik-games-site%26utm_medium%3Dlanding&amp;hl=de">
+            <img src="img/google-play-badge.png" alt="Jetzt bei Google Play" width="161" height="48">
+          </a>
+          <a class="badge" lang="es" href="https://play.google.com/store/apps/details?id=com.rombik.toddlersgame&amp;referrer=utm_source%3Drombik-games-site%26utm_medium%3Dlanding&amp;hl=es">
+            <img src="img/google-play-badge.png" alt="Disponible en Google Play" width="161" height="48">
+          </a>
+          <a class="badge" lang="pl" href="https://play.google.com/store/apps/details?id=com.rombik.toddlersgame&amp;referrer=utm_source%3Drombik-games-site%26utm_medium%3Dlanding&amp;hl=pl">
+            <img src="img/google-play-badge.png" alt="Pobierz z Google Play" width="161" height="48">
+          </a>
         </div>
         <p class="note" lang="uk">Дві ігри безкоштовні назавжди. Решту — і всі нові ігри — відкриває одна покупка, без підписки.</p>
         <p class="note" lang="en">Two games are free for good. One purchase opens the rest — and every new game — with no subscription.</p>
         <p class="note" lang="ru">Две игры бесплатны навсегда. Остальные — и все новые игры — открывает одна покупка, без подписки.</p>
+        <p class="note" lang="de">Zwei Spiele sind für immer kostenlos. Ein Kauf öffnet den Rest – und jedes neue Spiel – ohne Abo.</p>
+        <p class="note" lang="es">Dos juegos son gratis para siempre. Una sola compra abre el resto, y cada juego nuevo, sin suscripción.</p>
+        <p class="note" lang="pl">Dwie gry są darmowe na zawsze. Jeden zakup otwiera resztę – i każdą nową grę – bez subskrypcji.</p>
       </div>
       <img class="shot" src="img/home.jpg" width="1748" height="804" alt="The meadow: Pipit the bird on an oak branch, a question mark in the hollow, a shape sorter and a mushroom house, with the sound and parents' gear buttons in the corner">
     </div>
@@ -163,22 +194,28 @@
       <h2 lang="uk">Створено для маленьких рук</h2>
       <h2 lang="en">Made for little hands</h2>
       <h2 lang="ru">Создано для маленьких рук</h2>
+      <h2 lang="de">Für kleine Hände gemacht</h2>
+      <h2 lang="es">Hecho para manos pequeñas</h2>
+      <h2 lang="pl">Stworzone dla małych rączek</h2>
       <p class="sub" lang="uk">Кожен будиночок на галявині — двері до гри, а дупло старого дуба відкриває випадкову. Читати нічого не треба: великі деталі, прості дотики й перетягування.</p>
       <p class="sub" lang="en">Every little house on the meadow is a door to a game, and the old oak's hollow opens one by chance. Nothing to read: big pieces, simple taps and drags.</p>
       <p class="sub" lang="ru">Каждый домик на поляне — дверь в игру, а дупло старого дуба открывает случайную. Читать ничего не нужно: большие детали, простые касания и перетаскивания.</p>
+      <p class="sub" lang="de">Jedes Häuschen auf der Wiese ist eine Tür zu einem Spiel, und das Astloch der alten Eiche öffnet ein zufälliges. Nichts zu lesen: große Teile, einfaches Tippen und Ziehen.</p>
+      <p class="sub" lang="es">Cada casita de la pradera es la puerta a un juego, y el hueco del viejo roble abre uno al azar. No hay nada que leer: piezas grandes, toques y arrastres sencillos.</p>
+      <p class="sub" lang="pl">Każdy domek na łące to drzwi do gry, a dziupla starego dębu otwiera losową. Nie trzeba nic czytać: duże elementy, proste dotknięcia i przeciąganie.</p>
       <div class="points">
         <div class="point"><div class="ico" aria-hidden="true">🚫</div>
-          <h3 lang="uk">Без реклами</h3><h3 lang="en">No ads</h3><h3 lang="ru">Без рекламы</h3>
-          <p lang="uk">Ні банерів, ні відео, ні випадкових переходів.</p><p lang="en">No banners, no videos, no stray taps away.</p><p lang="ru">Ни баннеров, ни видео, ни случайных переходов.</p></div>
+          <h3 lang="uk">Без реклами</h3><h3 lang="en">No ads</h3><h3 lang="ru">Без рекламы</h3><h3 lang="de">Ohne Werbung</h3><h3 lang="es">Sin anuncios</h3><h3 lang="pl">Bez reklam</h3>
+          <p lang="uk">Ні банерів, ні відео, ні випадкових переходів.</p><p lang="en">No banners, no videos, no stray taps away.</p><p lang="ru">Ни баннеров, ни видео, ни случайных переходов.</p><p lang="de">Keine Banner, keine Videos, kein versehentliches Wegtippen.</p><p lang="es">Ni banners, ni vídeos, ni toques que lleven a otra parte.</p><p lang="pl">Żadnych banerów, filmów ani przypadkowych przejść.</p></div>
         <div class="point"><div class="ico" aria-hidden="true">🐢</div>
-          <h3 lang="uk">Без поспіху</h3><h3 lang="en">No rush</h3><h3 lang="ru">Без спешки</h3>
-          <p lang="uk">Немає таймерів і програшів — гра чекає на дитину.</p><p lang="en">No timers and no losing — every game waits for the child.</p><p lang="ru">Нет таймеров и проигрышей — игра ждёт ребёнка.</p></div>
+          <h3 lang="uk">Без поспіху</h3><h3 lang="en">No rush</h3><h3 lang="ru">Без спешки</h3><h3 lang="de">Ohne Eile</h3><h3 lang="es">Sin prisas</h3><h3 lang="pl">Bez pośpiechu</h3>
+          <p lang="uk">Немає таймерів і програшів — гра чекає на дитину.</p><p lang="en">No timers and no losing — every game waits for the child.</p><p lang="ru">Нет таймеров и проигрышей — игра ждёт ребёнка.</p><p lang="de">Keine Uhr und kein Verlieren – jedes Spiel wartet auf das Kind.</p><p lang="es">Sin cronómetros y sin perder: cada juego espera al niño.</p><p lang="pl">Bez liczników czasu i przegrywania – gra czeka na dziecko.</p></div>
         <div class="point"><div class="ico" aria-hidden="true">👆</div>
-          <h3 lang="uk">Підказки</h3><h3 lang="en">Gentle hints</h3><h3 lang="ru">Подсказки</h3>
-          <p lang="uk">Якщо малюк завагався, рука-підказка покаже, що робити.</p><p lang="en">If the child hesitates, a see-through hand shows the move.</p><p lang="ru">Если малыш засомневался, рука-подсказка покажет, что делать.</p></div>
+          <h3 lang="uk">Підказки</h3><h3 lang="en">Gentle hints</h3><h3 lang="ru">Подсказки</h3><h3 lang="de">Sanfte Hinweise</h3><h3 lang="es">Pistas suaves</h3><h3 lang="pl">Podpowiedzi</h3>
+          <p lang="uk">Якщо малюк завагався, рука-підказка покаже, що робити.</p><p lang="en">If the child hesitates, a see-through hand shows the move.</p><p lang="ru">Если малыш засомневался, рука-подсказка покажет, что делать.</p><p lang="de">Zögert das Kind, zeigt eine durchsichtige Hand, was zu tun ist.</p><p lang="es">Si el peque duda, una mano transparente le muestra qué hacer.</p><p lang="pl">Gdy maluch się zawaha, przezroczysta rączka pokaże, co zrobić.</p></div>
         <div class="point"><div class="ico" aria-hidden="true">🔒</div>
-          <h3 lang="uk">Нічого не збираємо</h3><h3 lang="en">No data collected</h3><h3 lang="ru">Ничего не собираем</h3>
-          <p lang="uk">Без акаунтів, аналітики й стеження. Працює без інтернету.</p><p lang="en">No accounts, analytics or tracking. Works offline.</p><p lang="ru">Без аккаунтов, аналитики и слежки. Работает без интернета.</p></div>
+          <h3 lang="uk">Нічого не збираємо</h3><h3 lang="en">No data collected</h3><h3 lang="ru">Ничего не собираем</h3><h3 lang="de">Keine Datenerfassung</h3><h3 lang="es">No recogemos datos</h3><h3 lang="pl">Nic nie zbieramy</h3>
+          <p lang="uk">Без акаунтів, аналітики й стеження. Працює без інтернету.</p><p lang="en">No accounts, analytics or tracking. Works offline.</p><p lang="ru">Без аккаунтов, аналитики и слежки. Работает без интернета.</p><p lang="de">Keine Konten, keine Analyse, kein Tracking. Funktioniert offline.</p><p lang="es">Sin cuentas, analíticas ni rastreo. Funciona sin internet.</p><p lang="pl">Bez kont, analityki i śledzenia. Działa bez internetu.</p></div>
       </div>
     </div>
   </section>
@@ -187,17 +224,17 @@
     <div class="wrap">
       <div class="gallery">
         <figure><img class="shot" src="img/shapes.jpg" width="1748" height="804" loading="lazy" alt="Shapes: a Christmas tree, a ball and a TV under their shadows">
-          <figcaption lang="uk">Форми</figcaption><figcaption lang="en">Shapes</figcaption><figcaption lang="ru">Формы</figcaption></figure>
+          <figcaption lang="uk">Форми</figcaption><figcaption lang="en">Shapes</figcaption><figcaption lang="ru">Формы</figcaption><figcaption lang="de">Formen</figcaption><figcaption lang="es">Formas</figcaption><figcaption lang="pl">Kształty</figcaption></figure>
         <figure><img class="shot" src="img/puzzle.jpg" width="1748" height="804" loading="lazy" alt="Puzzle: four pieces of a cow picture">
-          <figcaption lang="uk">Пазл</figcaption><figcaption lang="en">Puzzle</figcaption><figcaption lang="ru">Пазл</figcaption></figure>
+          <figcaption lang="uk">Пазл</figcaption><figcaption lang="en">Puzzle</figcaption><figcaption lang="ru">Пазл</figcaption><figcaption lang="de">Puzzle</figcaption><figcaption lang="es">Rompecabezas</figcaption><figcaption lang="pl">Puzzle</figcaption></figure>
         <figure><img class="shot" src="img/train.jpg" width="1748" height="804" loading="lazy" alt="What comes next: a little train with a rabbit, a strawberry, a rabbit, a strawberry and an empty wagon, and a strawberry and a rabbit to choose from">
-          <figcaption lang="uk">Що буде далі</figcaption><figcaption lang="en">What comes next</figcaption><figcaption lang="ru">Что будет дальше</figcaption></figure>
+          <figcaption lang="uk">Що буде далі</figcaption><figcaption lang="en">What comes next</figcaption><figcaption lang="ru">Что будет дальше</figcaption><figcaption lang="de">Was kommt danach</figcaption><figcaption lang="es">¿Qué sigue?</figcaption><figcaption lang="pl">Co będzie dalej</figcaption></figure>
         <figure><img class="shot" src="img/feed.jpg" width="1748" height="804" loading="lazy" alt="Feeding: a squirrel, a mouse, a rabbit and a dog with a carrot, a nut, a bone and cheese">
-          <figcaption lang="uk">Нагодуй звірят</figcaption><figcaption lang="en">Feeding</figcaption><figcaption lang="ru">Покорми зверят</figcaption></figure>
+          <figcaption lang="uk">Нагодуй звірят</figcaption><figcaption lang="en">Feeding</figcaption><figcaption lang="ru">Покорми зверят</figcaption><figcaption lang="de">Füttern</figcaption><figcaption lang="es">Dar de comer</figcaption><figcaption lang="pl">Nakarm zwierzątka</figcaption></figure>
         <figure><img class="shot" src="img/family.jpg" width="1748" height="804" loading="lazy" alt="Mother and baby: four mothers and their babies">
-          <figcaption lang="uk">Мама і малюк</figcaption><figcaption lang="en">Mother and baby</figcaption><figcaption lang="ru">Мама и малыш</figcaption></figure>
+          <figcaption lang="uk">Мама і малюк</figcaption><figcaption lang="en">Mother and baby</figcaption><figcaption lang="ru">Мама и малыш</figcaption><figcaption lang="de">Mama und Kind</figcaption><figcaption lang="es">Mamá y bebé</figcaption><figcaption lang="pl">Mama i maluch</figcaption></figure>
         <figure><img class="shot" src="img/wash.jpg" width="1748" height="804" loading="lazy" alt="Wash the animals: a puppy with mud on its head and paw">
-          <figcaption lang="uk">Помий звірят</figcaption><figcaption lang="en">Wash the animals</figcaption><figcaption lang="ru">Помой зверят</figcaption></figure>
+          <figcaption lang="uk">Помий звірят</figcaption><figcaption lang="en">Wash the animals</figcaption><figcaption lang="ru">Помой зверят</figcaption><figcaption lang="de">Tiere waschen</figcaption><figcaption lang="es">Baña a los animales</figcaption><figcaption lang="pl">Umyj zwierzątka</figcaption></figure>
       </div>
     </div>
   </section>
@@ -207,9 +244,15 @@
       <h2 lang="uk">15 ігор на одній галявині</h2>
       <h2 lang="en">15 games on one meadow</h2>
       <h2 lang="ru">15 игр на одной поляне</h2>
+      <h2 lang="de">15 Spiele auf einer Wiese</h2>
+      <h2 lang="es">15 juegos en una pradera</h2>
+      <h2 lang="pl">15 gier na jednej łące</h2>
       <p class="sub" lang="uk">У кожній грі кілька галявинок — від найпростішої до трохи складнішої, а ігри пам'ятають, що вже показували, тож наступного разу малюка чекають інші малюнки, тварини й речі. Ми постійно додаємо нові ігри, і з кожним оновленням на галявині з'являються нові будиночки.</p>
       <p class="sub" lang="en">Each game has several clearings, from the simplest to a little harder, and the games remember what they showed, so next time brings other pictures, animals and things. We keep adding new games, and every update brings new little houses to the meadow.</p>
       <p class="sub" lang="ru">В каждой игре несколько полянок — от самой простой до чуть более сложной, а игры помнят, что уже показывали, поэтому в следующий раз малыша ждут другие картинки, животные и вещи. Мы постоянно добавляем новые игры, и с каждым обновлением на поляне появляются новые домики.</p>
+      <p class="sub" lang="de">Jedes Spiel hat mehrere Lichtungen, von der einfachsten bis zu einer etwas schwierigeren, und die Spiele merken sich, was sie gezeigt haben – beim nächsten Mal warten andere Bilder, Tiere und Dinge. Wir fügen ständig neue Spiele hinzu, und mit jedem Update kommen neue Häuschen auf die Wiese.</p>
+      <p class="sub" lang="es">Cada juego tiene varios claros, del más sencillo a uno un poco más difícil, y los juegos recuerdan lo que ya mostraron, así que la próxima vez esperan otros dibujos, animales y cosas. Añadimos juegos nuevos constantemente, y cada actualización trae casitas nuevas a la pradera.</p>
+      <p class="sub" lang="pl">Każda gra ma kilka polanek, od najprostszej do nieco trudniejszej, a gry pamiętają, co już pokazały, więc następnym razem czekają inne obrazki, zwierzęta i rzeczy. Stale dodajemy nowe gry, a z każdą aktualizacją na łące pojawiają się nowe domki.</p>
       <ul class="games" lang="uk">
         <li class="free" data-free="безкоштовно">Форми</li><li class="free" data-free="безкоштовно">Розміри</li>
         <li>Лічба</li><li>Кольори</li><li>Розмальовка</li><li>Урожай</li><li>Збери ціле</li><li>Хованки</li>
@@ -234,6 +277,30 @@
         <li class="free" data-free="бесплатно, зимой">Наряди ёлку</li>
         <li class="soon">+ новые игры скоро</li>
       </ul>
+      <ul class="games" lang="de">
+        <li class="free" data-free="kostenlos">Formen</li><li class="free" data-free="kostenlos">Größen</li>
+        <li>Zählen</li><li>Farben</li><li>Ausmalen</li><li>Ernte</li><li>Bauen</li><li>Verstecken</li>
+        <li>Füttern</li><li>Paare finden</li><li>Was kommt danach</li><li>Mama und Kind</li>
+        <li>Tiere waschen</li><li>Zeig den Weg nach Hause</li><li>Puzzle</li>
+        <li class="free" data-free="kostenlos, im Winter">Schmück den Baum</li>
+        <li class="soon">+ bald neue Spiele</li>
+      </ul>
+      <ul class="games" lang="es">
+        <li class="free" data-free="gratis">Formas</li><li class="free" data-free="gratis">Tamaños</li>
+        <li>Contar</li><li>Colores</li><li>Colorear</li><li>Cosecha</li><li>Construir</li><li>Escondite</li>
+        <li>Dar de comer</li><li>Busca la pareja</li><li>¿Qué sigue?</li><li>Mamá y bebé</li>
+        <li>Baña a los animales</li><li>Camino a casa</li><li>Rompecabezas</li>
+        <li class="free" data-free="gratis, en invierno">Decora el árbol</li>
+        <li class="soon">+ pronto, juegos nuevos</li>
+      </ul>
+      <ul class="games" lang="pl">
+        <li class="free" data-free="za darmo">Kształty</li><li class="free" data-free="za darmo">Rozmiary</li>
+        <li>Liczenie</li><li>Kolory</li><li>Kolorowanka</li><li>Zbiory</li><li>Budowanie</li><li>W chowanego</li>
+        <li>Nakarm zwierzątka</li><li>Znajdź parę</li><li>Co będzie dalej</li><li>Mama i maluch</li>
+        <li>Umyj zwierzątka</li><li>Prowadź do domu</li><li>Puzzle</li>
+        <li class="free" data-free="za darmo, zimą">Ubierz choinkę</li>
+        <li class="soon">+ wkrótce nowe gry</li>
+      </ul>
     </div>
   </section>
 
@@ -242,22 +309,28 @@
       <h2 lang="uk">Грайте разом</h2>
       <h2 lang="en">Play together</h2>
       <h2 lang="ru">Играйте вместе</h2>
+      <h2 lang="de">Gemeinsam spielen</h2>
+      <h2 lang="es">Jugad juntos</h2>
+      <h2 lang="pl">Grajcie razem</h2>
       <p class="sub" lang="uk">У Rombik немає озвучених слів — голос гри це ви. Малюки найкраще вчаться, коли дорослий поруч називає вголос те, що вони бачать.</p>
       <p class="sub" lang="en">Rombik has no spoken words — you are the voice of the game. Little ones learn best when a grown-up beside them names what they see.</p>
       <p class="sub" lang="ru">В Rombik нет озвученных слов — голос игры это вы. Малыши лучше всего учатся, когда взрослый рядом называет вслух то, что они видят.</p>
+      <p class="sub" lang="de">Rombik spricht keine Wörter – die Stimme des Spiels sind Sie. Kleine Kinder lernen am besten, wenn ein Erwachsener neben ihnen benennt, was sie sehen.</p>
+      <p class="sub" lang="es">Rombik no tiene palabras habladas: la voz del juego es usted. Los peques aprenden mejor cuando un adulto a su lado nombra lo que ven.</p>
+      <p class="sub" lang="pl">W Rombiku nie ma nagranych słów – głosem gry jesteś Ty. Maluchy uczą się najlepiej, gdy dorosły obok nazywa na głos to, co widzą.</p>
       <div class="points">
         <div class="point"><div class="ico" aria-hidden="true">🗣️</div>
-          <h3 lang="uk">Називайте вголос</h3><h3 lang="en">Say it aloud</h3><h3 lang="ru">Называйте вслух</h3>
-          <p lang="uk">«Червоне коло», «великий ведмедик» — кажіть, що робить малюк, а Піпіт підбадьорить вас обох.</p><p lang="en">“A red circle”, “the big bear”: name what your child does, and Pipit cheers you both on.</p><p lang="ru">«Красный круг», «большой мишка» — говорите, что делает малыш, а Пипит подбодрит вас обоих.</p></div>
+          <h3 lang="uk">Називайте вголос</h3><h3 lang="en">Say it aloud</h3><h3 lang="ru">Называйте вслух</h3><h3 lang="de">Laut benennen</h3><h3 lang="es">Dígalo en voz alta</h3><h3 lang="pl">Nazywaj na głos</h3>
+          <p lang="uk">«Червоне коло», «великий ведмедик» — кажіть, що робить малюк, а Піпіт підбадьорить вас обох.</p><p lang="en">“A red circle”, “the big bear”: name what your child does, and Pipit cheers you both on.</p><p lang="ru">«Красный круг», «большой мишка» — говорите, что делает малыш, а Пипит подбодрит вас обоих.</p><p lang="de">„Ein roter Kreis“, „der große Bär“: Sagen Sie, was Ihr Kind tut, und Pipit feuert Sie beide an.</p><p lang="es">«Un círculo rojo», «el oso grande»: diga lo que hace su peque, y Pipit los anima a los dos.</p><p lang="pl">„Czerwone kółko”, „duży miś” – mów, co robi maluch, a Pipit kibicuje wam obojgu.</p></div>
         <div class="point"><div class="ico" aria-hidden="true">⏳</div>
-          <h3 lang="uk">Коротко й весело</h3><h3 lang="en">Short and sweet</h3><h3 lang="ru">Коротко и весело</h3>
-          <p lang="uk">Кілька коротких ігор кращі за одну довгу: закінчуйте, поки малюк не втомився.</p><p lang="en">A few short games are better than one long one: stop before your child gets tired.</p><p lang="ru">Несколько коротких игр лучше одной длинной: заканчивайте, пока малыш не устал.</p></div>
+          <h3 lang="uk">Коротко й весело</h3><h3 lang="en">Short and sweet</h3><h3 lang="ru">Коротко и весело</h3><h3 lang="de">Kurz und fröhlich</h3><h3 lang="es">Corto y divertido</h3><h3 lang="pl">Krótko i wesoło</h3>
+          <p lang="uk">Кілька коротких ігор кращі за одну довгу: закінчуйте, поки малюк не втомився.</p><p lang="en">A few short games are better than one long one: stop before your child gets tired.</p><p lang="ru">Несколько коротких игр лучше одной длинной: заканчивайте, пока малыш не устал.</p><p lang="de">Ein paar kurze Spiele sind besser als ein langes: Hören Sie auf, bevor Ihr Kind müde wird.</p><p lang="es">Unos juegos cortos son mejores que uno largo: pare antes de que su peque se canse.</p><p lang="pl">Kilka krótkich gier jest lepszych niż jedna długa: kończ, zanim maluch się zmęczy.</p></div>
         <div class="point"><div class="ico" aria-hidden="true">📌</div>
-          <h3 lang="uk">Закріпіть екран</h3><h3 lang="en">Pin the screen</h3><h3 lang="ru">Закрепите экран</h3>
-          <p lang="uk">Щоб маленька рука випадково не вийшла з гри: як це зробити, показано на сторінці для батьків.</p><p lang="en">So a little hand can't leave the game by chance: the parents' page shows how.</p><p lang="ru">Чтобы маленькая ручка случайно не вышла из игры: как это сделать, показано на странице для родителей.</p></div>
+          <h3 lang="uk">Закріпіть екран</h3><h3 lang="en">Pin the screen</h3><h3 lang="ru">Закрепите экран</h3><h3 lang="de">Bildschirm fixieren</h3><h3 lang="es">Fije la pantalla</h3><h3 lang="pl">Przypnij ekran</h3>
+          <p lang="uk">Щоб маленька рука випадково не вийшла з гри: як це зробити, показано на сторінці для батьків.</p><p lang="en">So a little hand can't leave the game by chance: the parents' page shows how.</p><p lang="ru">Чтобы маленькая ручка случайно не вышла из игры: как это сделать, показано на странице для родителей.</p><p lang="de">Damit eine kleine Hand das Spiel nicht aus Versehen verlässt: Wie das geht, zeigt die Elternseite.</p><p lang="es">Para que una manita no salga del juego sin querer: la página para padres muestra cómo.</p><p lang="pl">Żeby mała rączka przypadkiem nie wyszła z gry: jak to zrobić, pokazuje strona dla rodziców.</p></div>
         <div class="point"><div class="ico" aria-hidden="true">🌱</div>
-          <h3 lang="uk">Як радять педіатри</h3><h3 lang="en">As pediatricians advise</h3><h3 lang="ru">Как советуют педиатры</h3>
-          <p lang="uk">З півтора року — лише разом із дорослим, з двох до п'яти — не більше години на день.</p><p lang="en">From 18 months only together with a grown-up, and no more than an hour a day from two to five.</p><p lang="ru">С полутора лет — только вместе со взрослым, с двух до пяти — не больше часа в день.</p></div>
+          <h3 lang="uk">Як радять педіатри</h3><h3 lang="en">As pediatricians advise</h3><h3 lang="ru">Как советуют педиатры</h3><h3 lang="de">Wie Kinderärzte raten</h3><h3 lang="es">Como aconsejan los pediatras</h3><h3 lang="pl">Jak radzą pediatrzy</h3>
+          <p lang="uk">З півтора року — лише разом із дорослим, з двох до п'яти — не більше години на день.</p><p lang="en">From 18 months only together with a grown-up, and no more than an hour a day from two to five.</p><p lang="ru">С полутора лет — только вместе со взрослым, с двух до пяти — не больше часа в день.</p><p lang="de">Ab 18 Monaten nur zusammen mit einem Erwachsenen, von zwei bis fünf Jahren höchstens eine Stunde am Tag.</p><p lang="es">Desde los 18 meses, solo junto a un adulto; de los dos a los cinco años, no más de una hora al día.</p><p lang="pl">Od 18. miesiąca tylko razem z dorosłym, od dwóch do pięciu lat nie dłużej niż godzinę dziennie.</p></div>
       </div>
     </div>
   </section>
@@ -267,6 +340,9 @@
       <h2 lang="uk">Для батьків</h2>
       <h2 lang="en">For parents</h2>
       <h2 lang="ru">Для родителей</h2>
+      <h2 lang="de">Für Eltern</h2>
+      <h2 lang="es">Para padres</h2>
+      <h2 lang="pl">Dla rodziców</h2>
       <ul lang="uk">
         <li>Дві ігри — «Форми» й «Розміри» — безкоштовні назавжди.</li>
         <li>Інші тринадцять відкриває одна покупка. Нові ігри ми додаємо постійно — і вони відкриються разом із нею, без доплат.</li>
@@ -291,6 +367,30 @@
         <li>Язык — русский, английский, украинский, немецкий, испанский или польский, музыку можно выключить на странице для родителей. Там же подсказка, как закрепить экран, чтобы малыш случайно не вышел из игры, и кнопки, чтобы оценить приложение, поделиться им и написать нам.</li>
         <li>Без рекламы, аккаунтов, аналитики и какого-либо сбора данных. Подробности — в <a href="privacy/">политике конфиденциальности</a>.</li>
       </ul>
+      <ul lang="de">
+        <li>Zwei Spiele – Formen und Größen – sind für immer kostenlos.</li>
+        <li>Ein Kauf öffnet die anderen dreizehn. Wir fügen ständig neue Spiele hinzu, und sie öffnen sich ohne Aufpreis mit.</li>
+        <li>Käufe und Einstellungen liegen hinter einer Rechenaufgabe für Erwachsene, damit Kleine sie nicht aus Versehen erreichen. Auch ein verschlossenes Häuschen führt nur über diese Aufgabe zum Kauf.</li>
+        <li>Vom 1. Dezember bis 14. Januar wird die Wiese winterlich, und neben der Eiche wächst ein Tannenbaum zum Schmücken: Dieses Feiertagsspiel ist für alle kostenlos.</li>
+        <li>Deutsch, Englisch, Ukrainisch, Spanisch, Polnisch oder Russisch; die Musik lässt sich auf der Elternseite ausschalten. Dort steht auch, wie man den Bildschirm fixiert, damit die Kleinen das Spiel nicht aus Versehen verlassen, mit Knöpfen, um die App zu bewerten, zu teilen und uns zu schreiben.</li>
+        <li>Keine Werbung, keine Konten, keine Analyse und keinerlei Datenerfassung. Einzelheiten in der <a href="privacy/">Datenschutzerklärung</a>.</li>
+      </ul>
+      <ul lang="es">
+        <li>Dos juegos, Formas y Tamaños, son gratis para siempre.</li>
+        <li>Una sola compra abre los otros trece. Añadimos juegos nuevos constantemente, y se abren con ella sin coste extra.</li>
+        <li>Las compras y los ajustes están detrás de una suma para adultos, así que los peques no llegan a ellos por accidente. Una casita cerrada también lleva a la compra solo a través de esa suma.</li>
+        <li>Del 1 de diciembre al 14 de enero la pradera se vuelve invernal y junto al roble crece un abeto para decorar: este juego navideño es gratis para todos.</li>
+        <li>Español, inglés, ucraniano, alemán, polaco o ruso; la música se puede apagar en la página para padres. Allí también se explica cómo fijar la pantalla para que el peque no salga del juego sin querer, con botones para valorar la app, compartirla y escribirnos.</li>
+        <li>Sin anuncios, cuentas, analíticas ni recogida de datos de ningún tipo. Más detalles en la <a href="privacy/">política de privacidad</a>.</li>
+      </ul>
+      <ul lang="pl">
+        <li>Dwie gry – Kształty i Rozmiary – są darmowe na zawsze.</li>
+        <li>Jeden zakup otwiera pozostałe trzynaście. Stale dodajemy nowe gry, a one otworzą się razem z nim, bez dopłat.</li>
+        <li>Zakupy i ustawienia są ukryte za działaniem dla dorosłych, więc maluch nie trafi na nie przypadkiem. Zamknięty domek też prowadzi do zakupu tylko przez to działanie.</li>
+        <li>Od 1 grudnia do 14 stycznia łąka staje się zimowa, a przy dębie wyrasta choinka do ubrania – ta świąteczna gra jest darmowa dla wszystkich.</li>
+        <li>Polski, angielski, ukraiński, niemiecki, hiszpański lub rosyjski; muzykę można wyłączyć na stronie dla rodziców. Jest tam też podpowiedź, jak przypiąć ekran, żeby maluch przypadkiem nie wyszedł z gry, oraz przyciski, by ocenić aplikację, udostępnić ją i napisać do nas.</li>
+        <li>Bez reklam, kont, analityki i jakiegokolwiek zbierania danych. Szczegóły w <a href="privacy/">polityce prywatności</a>.</li>
+      </ul>
     </div>
   </section>
 </main>
@@ -299,9 +399,9 @@
   <div class="wrap">
     <span>© 2026 Rombik Games</span>
     <span>
-      <a href="support/" lang="uk">Підтримка</a><a href="support/" lang="en">Support</a><a href="support/" lang="ru">Поддержка</a>
-      · <a href="privacy/" lang="uk">Політика конфіденційності</a><a href="privacy/" lang="en">Privacy policy</a><a href="privacy/" lang="ru">Политика конфиденциальности</a>
-      · <a href="terms/" lang="uk">Умови використання</a><a href="terms/" lang="en">Terms of use</a><a href="terms/" lang="ru">Условия использования</a>
+      <a href="support/" lang="uk">Підтримка</a><a href="support/" lang="en">Support</a><a href="support/" lang="ru">Поддержка</a><a href="support/" lang="de">Hilfe</a><a href="support/" lang="es">Soporte</a><a href="support/" lang="pl">Pomoc</a>
+      · <a href="privacy/" lang="uk">Політика конфіденційності</a><a href="privacy/" lang="en">Privacy policy</a><a href="privacy/" lang="ru">Политика конфиденциальности</a><a href="privacy/" lang="de">Datenschutzerklärung</a><a href="privacy/" lang="es">Política de privacidad</a><a href="privacy/" lang="pl">Polityka prywatności</a>
+      · <a href="terms/" lang="uk">Умови використання</a><a href="terms/" lang="en">Terms of use</a><a href="terms/" lang="ru">Условия использования</a><a href="terms/" lang="de">Nutzungsbedingungen</a><a href="terms/" lang="es">Condiciones de uso</a><a href="terms/" lang="pl">Warunki korzystania</a>
       · <a href="mailto:daka.kolp01@gmail.com">daka.kolp01@gmail.com</a>
     </span>
   </div>
@@ -313,18 +413,18 @@
     function setLang(lang) {
       root.setAttribute('data-lang', lang);
       root.setAttribute('lang', lang);
-      document.title = { uk: 'Rombik Games — ігри для малюків', en: 'Rombik Games — games for toddlers', ru: 'Rombik Games — игры для малышей' }[lang];
+      document.title = { uk: 'Rombik Games — ігри для малюків', en: 'Rombik Games — games for toddlers', de: 'Rombik Games — Spiele für Kleinkinder', es: 'Rombik Games — juegos para peques', pl: 'Rombik Games — gry dla maluchów', ru: 'Rombik Games — игры для малышей' }[lang];
       document.querySelectorAll('[data-set-lang]').forEach(function (b) {
         b.setAttribute('aria-pressed', String(b.getAttribute('data-set-lang') === lang));
       });
       try { localStorage.setItem('lang', lang); } catch (e) {}
     }
-    var known = function (l) { return l === 'uk' || l === 'en' || l === 'ru'; };
+    var known = function (l) { return ['uk', 'en', 'de', 'es', 'pl', 'ru'].indexOf(l) >= 0; };
     var saved = null;
     try { saved = localStorage.getItem('lang'); } catch (e) {}
     var fromUrl = new URLSearchParams(location.search).get('lang');
     var browser = (navigator.language || '').toLowerCase().slice(0, 2);
-    if (browser !== 'uk' && browser !== 'ru') browser = 'en';
+    if (!known(browser)) browser = 'en';
     setLang(known(fromUrl) ? fromUrl : (known(saved) ? saved : null) || browser);
     document.querySelectorAll('[data-set-lang]').forEach(function (b) {
       b.addEventListener('click', function () { setLang(b.getAttribute('data-set-lang')); });
