@@ -31,7 +31,7 @@
          font:17px/1.6 "Nunito", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
   main { max-width:760px; margin:0 auto; padding:32px 16px 64px; }
   /* The same header and language switch as the landing page; one language shows at a time. */
-  html[data-lang="uk"] [lang="en"], html[data-lang="en"] [lang="uk"] { display:none !important; }
+  html:not([data-lang="uk"]) [lang="uk"], html:not([data-lang="en"]) [lang="en"], html:not([data-lang="ru"]) [lang="ru"] { display:none !important; }
   header.top { display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:24px; }
   .brand { display:flex; align-items:center; gap:10px; font-weight:800; font-size:1.15rem;
            text-decoration:none; color:var(--fg); }
@@ -56,15 +56,17 @@
 <main>
 <header class="top">
   <a class="brand" href="../"><img src="../img/icon.png" alt="" width="40" height="40">Rombik Games</a>
-  <div class="langs" role="group" aria-label="Language / Мова">
+  <div class="langs" role="group" aria-label="Language / Мова / Язык">
     <button type="button" data-set-lang="uk" aria-pressed="true">UA</button>
     <button type="button" data-set-lang="en" aria-pressed="false">EN</button>
+    <button type="button" data-set-lang="ru" aria-pressed="false">RU</button>
   </div>
 </header>
 
 <!-- ============================ ENGLISH ============================ -->
 <section id="en" lang="en">
 <h1>Privacy Policy — Rombik Games</h1>
+<!-- Set to the day the next version is released, when this page goes to the site. -->
 <p class="meta">Effective date: 21 October 2026</p>
 
 <div class="summary">
@@ -74,6 +76,7 @@
     <li>No accounts, no advertising, no analytics, no tracking, no third-party data-collecting SDKs.</li>
     <li>The app requests no device permissions (no camera, microphone, location, contacts or photos).</li>
     <li>The app itself does not connect to the internet. The one-time purchase is processed entirely by Apple or Google.</li>
+    <li>The few links out of the app (rate, share, write to us) sit in the parents' area behind a sum for grown-ups and open in other apps.</li>
   </ul>
 </div>
 
@@ -88,6 +91,9 @@ bundle ID <code>com.rombik.toddlersgame</code>), published by <strong>Daria Kolp
 <p>We do not collect any personal information. The app has no registration, no sign-in, no chat,
 no user-generated content that leaves the device, and no forms for entering a name, e-mail, age or
 any other personal detail.</p>
+<p>If a parent writes to us, by e-mail from the parents' page or otherwise, we receive what the
+letter contains, such as the sender's address. We use it only to answer, never for marketing, never
+pass it on, and delete the correspondence on request.</p>
 
 <h2>3. Information stored only on your device</h2>
 <p>To remember your choices between launches, the app keeps a few settings in its private storage
@@ -96,8 +102,9 @@ on the device. They are never sent to us or to anyone else:</p>
   <tr><th>Setting</th><th>Why</th></tr>
   <tr><td>Day or night look of the app (switched by touching the sun or the moon)</td><td>To keep the chosen appearance</td></tr>
   <tr><td>Music and sounds on or off</td><td>To keep the chosen sound settings</td></tr>
-  <tr><td>App language (Ukrainian or English)</td><td>To keep the language chosen on the parents' page</td></tr>
-  <tr><td>Mode of the colouring game</td><td>To reopen the game the way it was left</td></tr>
+  <tr><td>App language (English, Ukrainian, German, Spanish, Polish or Russian)</td><td>To keep the language chosen on the parents' page</td></tr>
+  <tr><td>Whether free colouring is on in the colouring game</td><td>So the game opens in the same mode next time</td></tr>
+  <tr><td>Which pictures and things each game showed lately</td><td>So the next game shows different ones</td></tr>
   <tr><td>Whether the full version has been purchased</td><td>To keep the paid games open, even offline</td></tr>
 </table>
 <p>Deleting the app removes all of this data.</p>
@@ -120,9 +127,23 @@ payment sheet appears.</p>
 <h2>5. Advertising, analytics and third parties</h2>
 <p>The app shows no advertising, contains no analytics or crash-reporting services, does not track
 users across apps or websites, and does not share or sell any data to third parties. It contains
-no links to websites or social networks that a child could open. The only link out of the app, to
-its own page in the App Store or on Google Play for leaving a review, sits in the parents' area
-behind the grown-ups' sum; the store's page is governed by Apple's or Google's privacy policy.</p>
+no links to websites or social networks that a child could open. The only links out of the app sit
+in the parents' area, behind the grown-ups' sum, and none of them sends any data from the app:</p>
+<ul>
+  <li><strong>Rate the app</strong> opens its own page in the App Store or on Google Play, governed by
+  Apple's or Google's privacy policy.</li>
+  <li><strong>Share the app</strong> opens the device's own share sheet with a short message and a link
+  to our website. Nothing is sent unless the parent picks an app and a recipient; that app's own
+  policy then applies. The link carries only the tag <code>utm_source=app</code>, which says where the
+  link came from and nothing about who shared it.</li>
+  <li><strong>Write to us</strong> opens the device's mail app with our address and a subject filled in.
+  The letter is written and sent by the parent, and we use it only to reply. On a device without a
+  mail app it opens our support page instead.</li>
+</ul>
+<p>Our website, <a href="https://vurarddo.github.io/rombik-games/">vurarddo.github.io/rombik-games</a>,
+is hosted on GitHub Pages and uses no cookies, analytics or tracking; GitHub may keep technical logs
+of visits under the <a href="https://docs.github.com/site-policy/privacy-policies/github-general-privacy-statement">GitHub
+Privacy Statement</a>.</p>
 
 <h2>6. Children's privacy</h2>
 <p>Rombik Games is made for young children. Because we collect no personal information at all, we
@@ -133,8 +154,9 @@ requirements. No parental consent is needed, since no data is collected.</p>
 
 <h2>7. Your rights</h2>
 <p>Under the GDPR and similar laws you have the right to access, correct or delete personal data
-about you. As we hold no personal data, there is nothing to access or delete on our side; all
-on-device settings disappear when the app is removed. You may still contact us with any question.</p>
+about you. The app gives us no personal data, so the only thing we may hold is a letter you sent us
+yourself: ask, and we will tell you what we have or delete it. All on-device settings disappear when
+the app is removed. You may contact us with any question.</p>
 
 <h2>8. Security</h2>
 <p>Settings are kept in the app's private storage, which other apps cannot read, and no data is
@@ -161,6 +183,7 @@ date above before such a version is released.</p>
     <li>Без облікових записів, реклами, аналітики, відстеження та сторонніх SDK, що збирають дані.</li>
     <li>Застосунок не запитує жодних дозволів (камера, мікрофон, геолокація, контакти, фото).</li>
     <li>Сам застосунок не з'єднується з інтернетом. Одноразову покупку повністю обробляє Apple або Google.</li>
+    <li>Кілька посилань назовні (оцінити, поділитися, написати нам) розміщені в розділі для батьків за прикладом для дорослих і відкриваються в інших застосунках.</li>
   </ul>
 </div>
 
@@ -175,6 +198,9 @@ date above before such a version is released.</p>
 <p>Ми не збираємо жодної персональної інформації. У застосунку немає реєстрації, входу, чату,
 контенту, що залишає пристрій, і жодних полів для введення імені, e-mail, віку чи інших
 персональних даних.</p>
+<p>Якщо батьки пишуть нам — листом зі сторінки для батьків чи інакше, — ми отримуємо те, що є в
+листі, наприклад адресу відправника. Ми використовуємо її лише для відповіді, ніколи для реклами,
+нікому не передаємо й видаляємо листування на прохання.</p>
 
 <h2>3. Дані, що зберігаються лише на пристрої</h2>
 <p>Щоб пам'ятати ваш вибір між запусками, застосунок зберігає кілька налаштувань у своєму
@@ -183,8 +209,9 @@ date above before such a version is released.</p>
   <tr><th>Налаштування</th><th>Навіщо</th></tr>
   <tr><td>Денний або нічний вигляд застосунку (перемикається дотиком до сонця чи місяця)</td><td>Щоб зберегти обраний вигляд</td></tr>
   <tr><td>Музика та звуки увімкнено чи вимкнено</td><td>Щоб зберегти налаштування звуку</td></tr>
-  <tr><td>Мова застосунку (українська чи англійська)</td><td>Щоб зберегти мову, обрану на сторінці для батьків</td></tr>
-  <tr><td>Режим гри-розмальовки</td><td>Щоб відкрити гру так, як її залишили</td></tr>
+  <tr><td>Мова застосунку (українська, англійська, німецька, іспанська, польська чи російська)</td><td>Щоб зберегти мову, обрану на сторінці для батьків</td></tr>
+  <tr><td>Чи увімкнено вільне розфарбовування в грі-розмальовці</td><td>Щоб наступного разу гра відкрилася в тому ж режимі</td></tr>
+  <tr><td>Які малюнки й речі кожна гра показувала останнім часом</td><td>Щоб наступна гра показала інші</td></tr>
   <tr><td>Чи придбано повну версію</td><td>Щоб платні ігри лишалися відкритими навіть офлайн</td></tr>
 </table>
 <p>Видалення застосунку видаляє всі ці дані.</p>
@@ -206,10 +233,25 @@ Apple (App Store) або Google (Google Play) згідно з власними �
 <h2>5. Реклама, аналітика та треті особи</h2>
 <p>Застосунок не показує реклами, не містить сервісів аналітики чи звітів про збої, не відстежує
 користувачів в інших застосунках і на сайтах, не передає і не продає жодних даних третім особам.
-У ньому немає посилань на сайти чи соцмережі, які могла б відкрити дитина. Єдине посилання
-назовні — на сторінку застосунку в App Store чи Google Play, щоб залишити відгук, — розміщене в
-розділі для батьків за прикладом для дорослих; на сторінці магазину діє політика конфіденційності
-Apple чи Google.</p>
+У ньому немає посилань на сайти чи соцмережі, які могла б відкрити дитина. Єдині посилання
+назовні розміщені в розділі для батьків за прикладом для дорослих, і жодне з них не надсилає даних
+із застосунку:</p>
+<ul>
+  <li><strong>Оцініть застосунок</strong> відкриває його сторінку в App Store чи Google Play, де діє
+  політика конфіденційності Apple чи Google.</li>
+  <li><strong>Поділіться застосунком</strong> відкриває системне меню «Поділитися» з коротким
+  повідомленням і посиланням на наш сайт. Нічого не надсилається, доки батьки самі не оберуть
+  застосунок та одержувача; далі діє політика того застосунку. Посилання містить лише позначку
+  <code>utm_source=app</code>, яка показує, звідки воно, і нічого не каже про того, хто ним поділився.</li>
+  <li><strong>Напишіть нам</strong> відкриває поштовий застосунок пристрою з нашою адресою й темою листа.
+  Лист пишуть і надсилають батьки, а ми використовуємо його лише для відповіді. Якщо на пристрої
+  немає пошти, натомість відкривається наша сторінка підтримки.</li>
+</ul>
+<p>Наш сайт <a href="https://vurarddo.github.io/rombik-games/">vurarddo.github.io/rombik-games</a>
+розміщено на GitHub Pages; він не використовує cookie, аналітики чи відстеження, а GitHub може
+вести технічні журнали відвідувань згідно з
+<a href="https://docs.github.com/site-policy/privacy-policies/github-general-privacy-statement">GitHub
+Privacy Statement</a>.</p>
 
 <h2>6. Конфіденційність дітей</h2>
 <p>Rombik Games створено для малюків. Оскільки ми взагалі не збираємо персональних даних,
@@ -220,9 +262,9 @@ Apple чи Google.</p>
 
 <h2>7. Ваші права</h2>
 <p>За GDPR та подібними законами ви маєте право на доступ, виправлення чи видалення своїх
-персональних даних. Оскільки ми не зберігаємо жодних персональних даних, на нашому боці немає
-чого надавати чи видаляти; налаштування на пристрої зникають разом із застосунком. Ви все одно
-можете звернутися до нас із будь-яким питанням.</p>
+персональних даних. Застосунок не передає нам персональних даних, тож у нас може бути лише лист,
+який ви самі нам надіслали: попросіть, і ми скажемо, що маємо, або видалимо його. Налаштування на
+пристрої зникають разом із застосунком. Звертайтеся до нас із будь-яким питанням.</p>
 
 <h2>8. Безпека</h2>
 <p>Налаштування зберігаються в приватному сховищі застосунку, недоступному іншим застосункам, і
@@ -235,6 +277,113 @@ Apple чи Google.</p>
 <h2>10. Контакти</h2>
 <p>Daria Kolpakova<br>E-mail: <a href="mailto:daka.kolp01@gmail.com">daka.kolp01@gmail.com</a></p>
 </section>
+
+<section id="ru" lang="ru">
+<h1>Политика конфиденциальности — Rombik Games</h1>
+<p class="meta">Вступает в силу: 21 октября 2026 года</p>
+
+<div class="summary">
+  <strong>Коротко:</strong>
+  <ul>
+    <li>Rombik Games не собирает, не хранит на серверах и не передаёт никаких персональных данных — ни ребёнка, ни родителей.</li>
+    <li>Без аккаунтов, рекламы, аналитики, отслеживания и сторонних SDK, собирающих данные.</li>
+    <li>Приложение не запрашивает никаких разрешений (камера, микрофон, геолокация, контакты, фото).</li>
+    <li>Само приложение не подключается к интернету. Разовую покупку полностью обрабатывает Apple или Google.</li>
+    <li>Несколько ссылок наружу (оценить, поделиться, написать нам) находятся в разделе для родителей за примером для взрослых и открываются в других приложениях.</li>
+  </ul>
+</div>
+
+<h2>1. Кто мы</h2>
+<p>Эта политика относится к мобильному приложению <strong>Rombik Games</strong> (в App Store и Google Play —
+«Rombik: Игры для малышей», под иконкой — «Rombik»;
+идентификатор <code>com.rombik.toddlersgame</code>), которое публикует <strong>Daria Kolpakova</strong>
+(«мы»). С любыми вопросами пишите на
+<a href="mailto:daka.kolp01@gmail.com">daka.kolp01@gmail.com</a>.</p>
+
+<h2>2. Какие данные мы собираем</h2>
+<p>Мы не собираем никакой персональной информации. В приложении нет регистрации, входа, чата,
+контента, который покидает устройство, и никаких полей для ввода имени, e-mail, возраста или других
+персональных данных.</p>
+<p>Если родители пишут нам — письмом со страницы для родителей или иначе, — мы получаем то, что есть
+в письме, например адрес отправителя. Мы используем его только для ответа, никогда для рекламы,
+никому не передаём и удаляем переписку по просьбе.</p>
+
+<h2>3. Данные, которые хранятся только на устройстве</h2>
+<p>Чтобы помнить ваш выбор между запусками, приложение хранит несколько настроек в своём
+приватном хранилище на устройстве. Они никогда не отправляются нам или кому-либо ещё:</p>
+<table>
+  <tr><th>Настройка</th><th>Зачем</th></tr>
+  <tr><td>Дневной или ночной вид приложения (переключается касанием солнца или луны)</td><td>Чтобы сохранить выбранный вид</td></tr>
+  <tr><td>Музыка и звуки включены или выключены</td><td>Чтобы сохранить настройку звука</td></tr>
+  <tr><td>Язык приложения (русский, английский, украинский, немецкий, испанский или польский)</td><td>Чтобы сохранить язык, выбранный на странице для родителей</td></tr>
+  <tr><td>Включена ли свободная раскраска в игре-раскраске</td><td>Чтобы в следующий раз игра открылась в том же режиме</td></tr>
+  <tr><td>Какие картинки и вещи каждая игра показывала в последнее время</td><td>Чтобы следующая игра показала другие</td></tr>
+  <tr><td>Куплена ли полная версия</td><td>Чтобы платные игры оставались открытыми даже офлайн</td></tr>
+</table>
+<p>Удаление приложения удаляет все эти данные.</p>
+
+<h2>4. Покупка в приложении</h2>
+<p>Часть игр открывается разовой покупкой. Покупку (и её восстановление) полностью обрабатывает
+Apple (App Store) или Google (Google Play) по своим условиям и политикам конфиденциальности. Мы не
+получаем и не видим ваше имя, платёжную карту, e-mail или другие платёжные данные; приложение узнаёт
+от магазина только то, куплена ли покупка. Оно переспрашивает об этом при запуске и на странице для
+родителей, поэтому в Google Play возвращённая покупка снова закрывает платные игры.</p>
+<ul>
+  <li>Apple: <a href="https://www.apple.com/legal/privacy/">apple.com/legal/privacy</a></li>
+  <li>Google: <a href="https://policies.google.com/privacy">policies.google.com/privacy</a></li>
+</ul>
+<p>Начать покупку можно только в разделе для родителей, который предназначен для взрослых. Он
+открывается только после ответа на простой пример для взрослых — с кнопки-шестерёнки на поляне или из
+закрытого домика игры, — а сама покупка задаёт ещё один пример, прежде чем появится окно оплаты
+магазина.</p>
+
+<h2>5. Реклама, аналитика и третьи лица</h2>
+<p>Приложение не показывает рекламу, не содержит сервисов аналитики или отчётов о сбоях, не
+отслеживает пользователей в других приложениях и на сайтах, не передаёт и не продаёт никаких данных
+третьим лицам. В нём нет ссылок на сайты или соцсети, которые мог бы открыть ребёнок. Единственные
+ссылки наружу находятся в разделе для родителей за примером для взрослых, и ни одна из них не
+отправляет данных из приложения:</p>
+<ul>
+  <li><strong>Оцените приложение</strong> открывает его страницу в App Store или Google Play, где
+  действует политика конфиденциальности Apple или Google.</li>
+  <li><strong>Поделитесь приложением</strong> открывает системное меню «Поделиться» с коротким
+  сообщением и ссылкой на наш сайт. Ничего не отправляется, пока родители сами не выберут приложение
+  и получателя; дальше действует политика того приложения. Ссылка содержит только пометку
+  <code>utm_source=app</code>, которая показывает, откуда она, и ничего не говорит о том, кто ею поделился.</li>
+  <li><strong>Напишите нам</strong> открывает почтовое приложение устройства с нашим адресом и темой
+  письма. Письмо пишут и отправляют родители, а мы используем его только для ответа. Если на
+  устройстве нет почты, вместо неё открывается наша страница поддержки.</li>
+</ul>
+<p>Наш сайт <a href="https://vurarddo.github.io/rombik-games/">vurarddo.github.io/rombik-games</a>
+размещён на GitHub Pages; он не использует cookie, аналитику или отслеживание, а GitHub может вести
+технические журналы посещений согласно
+<a href="https://docs.github.com/site-policy/privacy-policies/github-general-privacy-statement">GitHub
+Privacy Statement</a>.</p>
+
+<h2>6. Конфиденциальность детей</h2>
+<p>Rombik Games создано для малышей. Поскольку мы вообще не собираем персональных данных,
+приложение соответствует требованиям COPPA (США), Общего регламента ЕС по защите данных (GDPR,
+в частности статьи 8), британского Age Appropriate Design Code, Закона Украины «О защите
+персональных данных», а также требованиям Apple Kids Category и Google Play Families. Согласие
+родителей не требуется, потому что данные не собираются.</p>
+
+<h2>7. Ваши права</h2>
+<p>По GDPR и похожим законам у вас есть право на доступ, исправление или удаление своих
+персональных данных. Приложение не передаёт нам персональных данных, поэтому у нас может быть
+только письмо, которое вы сами нам отправили: попросите, и мы скажем, что у нас есть, или удалим
+его. Настройки на устройстве исчезают вместе с приложением. Обращайтесь к нам с любым вопросом.</p>
+
+<h2>8. Безопасность</h2>
+<p>Настройки хранятся в приватном хранилище приложения, недоступном другим приложениям, и
+приложение не передаёт никаких данных по сети.</p>
+
+<h2>9. Изменения политики</h2>
+<p>Если приложение когда-нибудь начнёт обрабатывать данные иначе, мы обновим эту страницу и дату
+вступления в силу ещё до выхода такой версии.</p>
+
+<h2>10. Контакты</h2>
+<p>Daria Kolpakova<br>E-mail: <a href="mailto:daka.kolp01@gmail.com">daka.kolp01@gmail.com</a></p>
+</section>
 </main>
 <script>
   (function () {
@@ -242,21 +391,21 @@ Apple чи Google.</p>
     function setLang(lang) {
       root.setAttribute('data-lang', lang);
       root.setAttribute('lang', lang);
-      document.title = lang === 'uk'
-        ? 'Rombik Games — Політика конфіденційності'
-        : 'Rombik Games — Privacy Policy';
+      document.title = { uk: 'Rombik Games — Політика конфіденційності', en: 'Rombik Games — Privacy Policy', ru: 'Rombik Games — Политика конфиденциальности' }[lang];
       document.querySelectorAll('[data-set-lang]').forEach(function (b) {
         b.setAttribute('aria-pressed', String(b.getAttribute('data-set-lang') === lang));
       });
       try { localStorage.setItem('lang', lang); } catch (e) {}
     }
+    var known = function (l) { return l === 'uk' || l === 'en' || l === 'ru'; };
     var saved = null;
     try { saved = localStorage.getItem('lang'); } catch (e) {}
     var fromUrl = new URLSearchParams(location.search).get('lang');
-    // Old links to #en / #uk still pick their language.
-    var fromHash = location.hash === '#uk' || location.hash === '#en' ? location.hash.slice(1) : null;
-    var browser = (navigator.language || '').toLowerCase().indexOf('uk') === 0 ? 'uk' : 'en';
-    setLang(fromUrl === 'uk' || fromUrl === 'en' ? fromUrl : fromHash || saved || browser);
+    // Old links to #en / #uk (and #ru) still pick their language.
+    var fromHash = known(location.hash.slice(1)) ? location.hash.slice(1) : null;
+    var browser = (navigator.language || '').toLowerCase().slice(0, 2);
+    if (browser !== 'uk' && browser !== 'ru') browser = 'en';
+    setLang(known(fromUrl) ? fromUrl : fromHash || (known(saved) ? saved : null) || browser);
     document.querySelectorAll('[data-set-lang]').forEach(function (b) {
       b.addEventListener('click', function () { setLang(b.getAttribute('data-set-lang')); });
     });

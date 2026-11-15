@@ -31,7 +31,7 @@
          font:17px/1.6 "Nunito", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
   main { max-width:760px; margin:0 auto; padding:32px 16px 64px; }
   /* The same header and language switch as the landing page; one language shows at a time. */
-  html[data-lang="uk"] [lang="en"], html[data-lang="en"] [lang="uk"] { display:none !important; }
+  html:not([data-lang="uk"]) [lang="uk"], html:not([data-lang="en"]) [lang="en"], html:not([data-lang="ru"]) [lang="ru"] { display:none !important; }
   header.top { display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:24px; }
   .brand { display:flex; align-items:center; gap:10px; font-weight:800; font-size:1.15rem;
            text-decoration:none; color:var(--fg); }
@@ -56,9 +56,10 @@
 <main>
 <header class="top">
   <a class="brand" href="../"><img src="../img/icon.png" alt="" width="40" height="40">Rombik Games</a>
-  <div class="langs" role="group" aria-label="Language / Мова">
+  <div class="langs" role="group" aria-label="Language / Мова / Язык">
     <button type="button" data-set-lang="uk" aria-pressed="true">UA</button>
     <button type="button" data-set-lang="en" aria-pressed="false">EN</button>
+    <button type="button" data-set-lang="ru" aria-pressed="false">RU</button>
   </div>
 </header>
 
@@ -229,6 +230,92 @@ Google Play</a>. Там, де вони відрізняються від цих 
 <h2>11. Контакти</h2>
 <p>Daria Kolpakova<br>E-mail: <a href="mailto:daka.kolp01@gmail.com">daka.kolp01@gmail.com</a></p>
 </section>
+
+<section id="ru" lang="ru">
+<h1>Условия использования — Rombik Games</h1>
+<p class="meta">Вступают в силу: 5 ноября 2026 года</p>
+
+<div class="summary">
+  <strong>Коротко:</strong>
+  <ul>
+    <li>Часть игр бесплатная, остальные открываются одной покупкой в приложении, без подписки.</li>
+    <li>Покупку обрабатывает Apple или Google, и возврат денег тоже через них.</li>
+    <li>Приложение для игры ребёнка рядом со взрослым; покупки и ссылки наружу — за примером для взрослых.</li>
+    <li>Ваши права потребителя по закону вашей страны действуют всегда.</li>
+  </ul>
+</div>
+
+<h2>1. Кто мы</h2>
+<p>Эти условия относятся к мобильному приложению <strong>Rombik Games</strong> (в App Store и Google Play —
+«Rombik: Игры для малышей»; идентификатор <code>com.rombik.toddlersgame</code>), которое публикует
+<strong>Daria Kolpakova</strong> («мы»). Устанавливая или используя приложение, вы соглашаетесь с
+этими условиями. Если вы не согласны, пожалуйста, не пользуйтесь приложением.</p>
+
+<h2>2. Лицензия</h2>
+<p>Мы предоставляем вам личную неисключительную лицензию без права передачи на использование
+приложения на устройствах, которыми вы владеете или пользуетесь, для частного некоммерческого
+использования, по правилам магазина, из которого вы его получили. Нельзя копировать, перепродавать,
+сдавать в аренду, изменять или распространять приложение, а также использовать его рисунки, музыку
+или звуки где-либо ещё.</p>
+<p>Если вы получили приложение из App Store, также действует
+<a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/">Licensed Application End User
+License Agreement</a> от Apple; если из Google Play — <a href="https://play.google/developer-content-policy/">условия
+Google Play</a>. Там, где они отличаются от этих условий, в вопросах, которые они регулируют,
+преобладают условия магазина.</p>
+
+<h2>3. Бесплатные игры и покупка</h2>
+<ul>
+  <li>Часть игр бесплатная. Остальные открываются разовой покупкой в приложении «Открыть все игры».
+  Это не подписка, и плата никогда не взимается повторно. Игры, добавленные в следующих версиях, тоже
+  открываются вместе с ней.</li>
+  <li>Цену магазин показывает до оплаты, в вашей валюте, вместе с налогами, которые он применяет.</li>
+  <li>Покупку полностью обрабатывает Apple или Google. Мы никогда не видим ваших платёжных данных.</li>
+  <li>Чтобы пользоваться покупкой на другом устройстве, войдите там в тот же Apple ID или аккаунт
+  Google и нажмите «Восстановить покупки» на странице для родителей. На iPhone и iPad покупка также
+  доступна вашей группе «Семейный доступ».</li>
+</ul>
+
+<h2>4. Возврат денег</h2>
+<p>Поскольку оплату принимает магазин, деньги возвращает тоже магазин по своим правилам: в App Store —
+через <a href="https://reportaproblem.apple.com">reportaproblem.apple.com</a>, в Google Play — через
+<a href="https://support.google.com/googleplay/answer/2479637">страницу возврата средств Google Play</a>.
+После возврата денег платные игры снова закрываются. Если что-то работает не так, как описано,
+сначала напишите нам: мы охотно поможем.</p>
+
+<h2>5. Дети и родители</h2>
+<p>Приложение создано для игры малышей под присмотром родителей или другого ответственного взрослого.
+Покупки, настройки и все ссылки наружу находятся в разделе для родителей, который открывается только
+после простого примера для взрослых. Как мы обращаемся с данными, описано в
+<a href="../privacy/">политике конфиденциальности</a>: коротко, приложение не собирает персональных данных.</p>
+
+<h2>6. Права собственности</h2>
+<p>Приложение, его игры, рисунки, персонажи (в том числе птичка Пипит), музыка и звуки принадлежат нам.
+Эти условия дают вам лицензию на их использование в приложении, а не право собственности на них.</p>
+
+<h2>7. Обновления и доступность</h2>
+<p>Мы можем обновлять приложение, чтобы исправить ошибки, добавить игры или изменить внешний вид.
+Часть содержимого, например сезонная игра, может появляться только в определённое время года. Мы
+стараемся поддерживать работу на актуальных версиях iOS и Android, но не можем гарантировать работу
+на каждом устройстве.</p>
+
+<h2>8. Ответственность</h2>
+<p>Мы делаем приложение бережно, но оно предоставляется «как есть». Насколько это позволяет закон, мы
+не отвечаем за косвенные убытки от его использования. Ничто в этих условиях не ограничивает и не
+исключает ответственности или прав, которые по закону нельзя ограничить или исключить, в том числе
+ваших прав потребителя.</p>
+
+<h2>9. Право</h2>
+<p>Эти условия регулируются правом Украины. Если вы потребитель и живёте в другой стране, за вами
+сохраняется защита обязательных законов о правах потребителей вашей страны, и вы можете обратиться
+в её суд.</p>
+
+<h2>10. Изменения условий</h2>
+<p>Если мы изменим эти условия, мы обновим эту страницу и дату вступления в силу. Изменения не
+отменяют покупки, которую вы уже сделали.</p>
+
+<h2>11. Контакты</h2>
+<p>Daria Kolpakova<br>E-mail: <a href="mailto:daka.kolp01@gmail.com">daka.kolp01@gmail.com</a></p>
+</section>
 </main>
 <script>
   (function () {
@@ -236,21 +323,21 @@ Google Play</a>. Там, де вони відрізняються від цих 
     function setLang(lang) {
       root.setAttribute('data-lang', lang);
       root.setAttribute('lang', lang);
-      document.title = lang === 'uk'
-        ? 'Rombik Games — Умови використання'
-        : 'Rombik Games — Terms of Use';
+      document.title = { uk: 'Rombik Games — Умови використання', en: 'Rombik Games — Terms of Use', ru: 'Rombik Games — Условия использования' }[lang];
       document.querySelectorAll('[data-set-lang]').forEach(function (b) {
         b.setAttribute('aria-pressed', String(b.getAttribute('data-set-lang') === lang));
       });
       try { localStorage.setItem('lang', lang); } catch (e) {}
     }
+    var known = function (l) { return l === 'uk' || l === 'en' || l === 'ru'; };
     var saved = null;
     try { saved = localStorage.getItem('lang'); } catch (e) {}
     var fromUrl = new URLSearchParams(location.search).get('lang');
-    // Old links to #en / #uk still pick their language.
-    var fromHash = location.hash === '#uk' || location.hash === '#en' ? location.hash.slice(1) : null;
-    var browser = (navigator.language || '').toLowerCase().indexOf('uk') === 0 ? 'uk' : 'en';
-    setLang(fromUrl === 'uk' || fromUrl === 'en' ? fromUrl : fromHash || saved || browser);
+    // Old links to #en / #uk (and #ru) still pick their language.
+    var fromHash = known(location.hash.slice(1)) ? location.hash.slice(1) : null;
+    var browser = (navigator.language || '').toLowerCase().slice(0, 2);
+    if (browser !== 'uk' && browser !== 'ru') browser = 'en';
+    setLang(known(fromUrl) ? fromUrl : fromHash || (known(saved) ? saved : null) || browser);
     document.querySelectorAll('[data-set-lang]').forEach(function (b) {
       b.addEventListener('click', function () { setLang(b.getAttribute('data-set-lang')); });
     });
