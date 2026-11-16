@@ -37,10 +37,18 @@
   .brand { display:flex; align-items:center; gap:10px; font-weight:800; font-size:1.15rem;
            text-decoration:none; color:var(--fg); }
   .brand img { width:40px; height:40px; border-radius:10px; }
-  .langs { display:flex; gap:4px; background:var(--card); border:1px solid var(--line); border-radius:999px; padding:3px; }
-  .langs button { font:inherit; font-weight:700; font-size:.9rem; border:0; background:none; color:var(--muted);
-                  padding:4px 12px; border-radius:999px; cursor:pointer; }
-  .langs button[aria-pressed="true"] { background:var(--orange); color:#fff; }
+  /* The language picker: the browser's own drop-down, drawn as a pill with a chevron. */
+  .langs { position: relative; display: inline-flex; align-items: center; color: var(--muted); }
+  .langs select {
+    appearance: none; -webkit-appearance: none; margin: 0; cursor: pointer;
+    font: inherit; font-weight: 700; font-size: .95rem; color: inherit;
+    background: var(--card); border: 1px solid var(--line); border-radius: 999px; padding: 6px 36px 6px 16px;
+  }
+  .langs select:focus-visible { outline: 2px solid var(--orange); outline-offset: 2px; }
+  .langs::after {
+    content: ""; position: absolute; right: 16px; top: 50%; width: 7px; height: 7px; pointer-events: none;
+    border-right: 2px solid currentColor; border-bottom: 2px solid currentColor; transform: translateY(-70%) rotate(45deg);
+  }
   h1 { font-size:1.9rem; line-height:1.25; margin:0 0 4px; font-weight:800; }
   h2 { font-size:1.15rem; margin:32px 0 8px; font-weight:800; }
   .meta { color:var(--muted); margin:0 0 24px; }
@@ -51,26 +59,23 @@
   table { width:100%; border-collapse:collapse; font-size:.95rem; }
   th, td { text-align:left; padding:8px; border-bottom:1px solid var(--line); vertical-align:top; }
   hr { border:0; border-top:1px solid var(--line); margin:56px 0; }
-  /* Six languages do not fit beside the name on a phone: the switch moves under it. */
   .brand { flex-shrink: 0; white-space: nowrap; }
-  @media (max-width: 560px) {
-    header.top { flex-wrap: wrap; }
-    .langs button { padding: 4px 10px; }
-  }
 </style>
 </head>
 <body>
 <main>
 <header class="top">
   <a class="brand" href="../"><img src="../img/icon.png" alt="" width="40" height="40">Rombik Games</a>
-  <div class="langs" role="group" aria-label="Language">
-    <button type="button" data-set-lang="en" aria-pressed="true">EN</button>
-    <button type="button" data-set-lang="uk" aria-pressed="false">UA</button>
-    <button type="button" data-set-lang="es" aria-pressed="false">ES</button>
-    <button type="button" data-set-lang="de" aria-pressed="false">DE</button>
-    <button type="button" data-set-lang="pl" aria-pressed="false">PL</button>
-    <button type="button" data-set-lang="ru" aria-pressed="false">RU</button>
-  </div>
+  <label class="langs">
+    <select id="lang" aria-label="Language">
+      <option value="en" selected>English</option>
+      <option value="uk">Українська</option>
+      <option value="es">Español</option>
+      <option value="de">Deutsch</option>
+      <option value="pl">Polski</option>
+      <option value="ru">Русский</option>
+    </select>
+  </label>
 </header>
 
 <!-- ============================ ENGLISH ============================ -->
@@ -731,13 +736,12 @@ zanim taka wersja zostanie wydana.</p>
 <script>
   (function () {
     var root = document.documentElement;
+    var picker = document.getElementById('lang');
     function setLang(lang) {
       root.setAttribute('data-lang', lang);
       root.setAttribute('lang', lang);
       document.title = { uk: 'Rombik Games — Політика конфіденційності', en: 'Rombik Games — Privacy Policy', ru: 'Rombik Games — Политика конфиденциальности' , de: 'Rombik Games — Datenschutzerklärung', es: 'Rombik Games — Política de privacidad', pl: 'Rombik Games — Polityka prywatności' }[lang];
-      document.querySelectorAll('[data-set-lang]').forEach(function (b) {
-        b.setAttribute('aria-pressed', String(b.getAttribute('data-set-lang') === lang));
-      });
+      picker.value = lang;
       try { localStorage.setItem('lang', lang); } catch (e) {}
     }
     var known = function (l) { return ['uk', 'en', 'de', 'es', 'pl', 'ru'].indexOf(l) >= 0; };
@@ -749,9 +753,7 @@ zanim taka wersja zostanie wydana.</p>
     var browser = (navigator.language || '').toLowerCase().slice(0, 2);
     if (!known(browser)) browser = 'en';
     setLang(known(fromUrl) ? fromUrl : fromHash || (known(saved) ? saved : null) || browser);
-    document.querySelectorAll('[data-set-lang]').forEach(function (b) {
-      b.addEventListener('click', function () { setLang(b.getAttribute('data-set-lang')); });
-    });
+    picker.addEventListener('change', function () { setLang(picker.value); });
   })();
 </script>
 </body>
