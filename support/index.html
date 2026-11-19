@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="uk" data-lang="uk">
+<html lang="en" data-lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -31,15 +31,24 @@
          font:17px/1.6 "Nunito", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
   main { max-width:760px; margin:0 auto; padding:32px 16px 64px; }
   /* The same header and language switch as the landing page; one language shows at a time. */
-  html[data-lang="uk"] [lang="en"], html[data-lang="en"] [lang="uk"] { display:none !important; }
+  html:not([data-lang="uk"]) [lang="uk"], html:not([data-lang="en"]) [lang="en"], html:not([data-lang="de"]) [lang="de"],
+  html:not([data-lang="es"]) [lang="es"], html:not([data-lang="pl"]) [lang="pl"], html:not([data-lang="ru"]) [lang="ru"] { display:none !important; }
   header.top { display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:24px; }
   .brand { display:flex; align-items:center; gap:10px; font-weight:800; font-size:1.15rem;
            text-decoration:none; color:var(--fg); }
   .brand img { width:40px; height:40px; border-radius:10px; }
-  .langs { display:flex; gap:4px; background:var(--card); border:1px solid var(--line); border-radius:999px; padding:3px; }
-  .langs button { font:inherit; font-weight:700; font-size:.9rem; border:0; background:none; color:var(--muted);
-                  padding:4px 12px; border-radius:999px; cursor:pointer; }
-  .langs button[aria-pressed="true"] { background:var(--orange); color:#fff; }
+  /* The language picker: the browser's own drop-down, drawn as a pill with a chevron. */
+  .langs { position: relative; display: inline-flex; align-items: center; color: var(--muted); }
+  .langs select {
+    appearance: none; -webkit-appearance: none; margin: 0; cursor: pointer;
+    font: inherit; font-weight: 700; font-size: .95rem; color: inherit;
+    background: var(--card); border: 1px solid var(--line); border-radius: 999px; padding: 6px 36px 6px 16px;
+  }
+  .langs select:focus-visible { outline: 2px solid var(--orange); outline-offset: 2px; }
+  .langs::after {
+    content: ""; position: absolute; right: 16px; top: 50%; width: 7px; height: 7px; pointer-events: none;
+    border-right: 2px solid currentColor; border-bottom: 2px solid currentColor; transform: translateY(-70%) rotate(45deg);
+  }
   h1 { font-size:1.9rem; line-height:1.25; margin:0 0 4px; font-weight:800; }
   h2 { font-size:1.15rem; margin:32px 0 8px; font-weight:800; }
   .meta { color:var(--muted); margin:0 0 24px; }
@@ -51,16 +60,23 @@
   th, td { text-align:left; padding:8px; border-bottom:1px solid var(--line); vertical-align:top; }
   .faq h2 { margin-top:28px; }
   .contact a { font-weight:800; }
+  .brand { flex-shrink: 0; white-space: nowrap; }
 </style>
 </head>
 <body>
 <main>
 <header class="top">
   <a class="brand" href="../"><img src="../img/icon.png" alt="" width="40" height="40">Rombik Games</a>
-  <div class="langs" role="group" aria-label="Language / Мова">
-    <button type="button" data-set-lang="uk" aria-pressed="true">UA</button>
-    <button type="button" data-set-lang="en" aria-pressed="false">EN</button>
-  </div>
+  <label class="langs">
+    <select id="lang" aria-label="Language">
+      <option value="en" selected>English</option>
+      <option value="uk">Українська</option>
+      <option value="es">Español</option>
+      <option value="de">Deutsch</option>
+      <option value="pl">Polski</option>
+      <option value="ru">Русский</option>
+    </select>
+  </label>
 </header>
 
 <!-- ============================ ENGLISH ============================ -->
@@ -78,7 +94,8 @@
 
 <h2>How do I open the parents' page?</h2>
 <p>On the meadow, tap the round gear button in the top-right corner and answer the simple sum for
-grown-ups. The page has the purchase, the language, the music and a link to rate the app.</p>
+grown-ups. The page has the purchase, the language, the music, how to pin the screen, and buttons
+to rate the app, share it with friends and write to us.</p>
 
 <h2>How do I open all the games?</h2>
 <p>Shapes and Sizes are free. On the parents' page, tap "Unlock all games" and answer one more sum:
@@ -96,8 +113,19 @@ group.</p>
 <a href="https://support.google.com/googleplay/answer/2479637">Google Play's refund page</a>.</p>
 
 <h2>How do I change the language or turn off the music?</h2>
-<p>Both are on the parents' page: English or Ukrainian, or as on the device, and the background
-music. All sound turns off with the round sound button on the meadow, one tap away.</p>
+<p>Both are on the parents' page: English, Ukrainian, German, Spanish, Polish or Russian, or as on the
+device, and the background music. All sound turns off with the round sound button on the meadow,
+one tap away.</p>
+
+<h2>How do I keep my child from leaving the game?</h2>
+<p>Pin the screen with the phone's own lock: Guided Access on iPhone and iPad, App pinning on
+Android. The parents' page shows the steps under "Pin the screen". While the screen is pinned, a
+swipe or a button cannot leave the app until you enter your code.</p>
+
+<h2>Where did the big fir on the meadow come from?</h2>
+<p>From 1 December to 14 January the meadow turns wintry, and a big fir stands by the oak: tap it to
+decorate the tree. This holiday game is free for everyone, and after the holidays it goes away
+until next winter.</p>
 
 <h2>How do I switch between day and night?</h2>
 <p>Touch the sun or the moon over the meadow.</p>
@@ -122,7 +150,8 @@ music. All sound turns off with the round sound button on the meadow, one tap aw
 
 <h2>Як відкрити сторінку для батьків?</h2>
 <p>На галявині торкніться круглої кнопки-шестерні у правому верхньому куті й дайте відповідь на
-простий приклад для дорослих. Там покупка, мова, музика й посилання, щоб оцінити застосунок.</p>
+простий приклад для дорослих. Там покупка, мова, музика, як закріпити екран, а також кнопки, щоб
+оцінити застосунок, поділитися ним із друзями й написати нам.</p>
 
 <h2>Як відкрити всі ігри?</h2>
 <p>«Форми» й «Розміри» безкоштовні. На сторінці для батьків натисніть «Відкрити всі ігри» й дайте
@@ -140,8 +169,19 @@ music. All sound turns off with the round sound button on the meadow, one tap aw
 <a href="https://support.google.com/googleplay/answer/2479637">сторінку повернень Google Play</a>.</p>
 
 <h2>Як змінити мову чи вимкнути музику?</h2>
-<p>Усе на сторінці для батьків: українська чи англійська або як на пристрої, а також фонова
-музика. Увесь звук вимикає кругла кнопка звуку на галявині — одним дотиком.</p>
+<p>Усе на сторінці для батьків: українська, англійська, німецька, іспанська, польська чи російська або як на
+пристрої, а також фонова музика. Увесь звук вимикає кругла кнопка звуку на галявині — одним
+дотиком.</p>
+
+<h2>Як зробити, щоб малюк не вийшов із гри?</h2>
+<p>Закріпіть екран вбудованим замком телефона: «Гід-доступ» на iPhone та iPad або «Закріплення
+застосунку» на Android. Кроки описано на сторінці для батьків у пункті «Закріпити екран». Поки екран
+закріплено, ні жест, ні кнопка не закриють застосунок, доки ви не введете код.</p>
+
+<h2>Звідки на галявині велика ялинка?</h2>
+<p>З 1 грудня до 14 січня галявина стає зимовою, а біля дуба з'являється велика ялинка: торкніться
+її, щоб прикрасити. Ця святкова гра безкоштовна для всіх, а після свят ховається до наступної
+зими.</p>
 
 <h2>Як змінити день на ніч?</h2>
 <p>Торкніться сонця чи місяця над галявиною.</p>
@@ -150,31 +190,251 @@ music. All sound turns off with the round sound button on the meadow, one tap aw
 <p>Жодних: без облікових записів, реклами й аналітики, і він працює без інтернету. Деталі — у
 <a href="../privacy/">політиці конфіденційності</a>.</p>
 </section>
+
+<!-- ============================ РУССКИЙ ============================ -->
+<section id="ru" lang="ru" class="faq">
+<h1>Поддержка — Rombik Games</h1>
+<p class="meta">Спокойные игры для малышей с птичкой Пипит.</p>
+
+<div class="summary contact">
+  <strong>Напишите нам</strong>, если у вас есть вопрос, идея или проблема:
+  <ul>
+    <li>E-mail: <a href="mailto:daka.kolp01@gmail.com">daka.kolp01@gmail.com</a></li>
+  </ul>
+  Поможет, если вы укажете устройство (iPhone, iPad или Android) и версию приложения.
+</div>
+
+<h2>Как открыть страницу для родителей?</h2>
+<p>На поляне коснитесь круглой кнопки-шестерёнки в правом верхнем углу и ответьте на простой пример
+для взрослых. Там покупка, язык, музыка, как закрепить экран, а также кнопки, чтобы оценить
+приложение, поделиться им с друзьями и написать нам.</p>
+
+<h2>Как открыть все игры?</h2>
+<p>«Формы» и «Размеры» бесплатные. На странице для родителей нажмите «Открыть все игры» и ответьте
+ещё на один пример — откроется окно оплаты магазина. Это одна покупка без подписки, и новые игры
+открываются вместе с ней.</p>
+
+<h2>Игры куплены, но на другом устройстве они закрыты</h2>
+<p>Войдите в тот же Apple ID или аккаунт Google, что и при покупке, откройте страницу для родителей
+и нажмите «Восстановить покупки». На iPhone и iPad покупкой также могут пользоваться участники
+вашей группы «Семейный доступ».</p>
+
+<h2>Как вернуть деньги?</h2>
+<p>Оплату обрабатывает магазин, поэтому и возврат тоже: в App Store — через
+<a href="https://reportaproblem.apple.com">reportaproblem.apple.com</a>, в Google Play — через
+<a href="https://support.google.com/googleplay/answer/2479637">страницу возвратов Google Play</a>.</p>
+
+<h2>Как сменить язык или выключить музыку?</h2>
+<p>Всё на странице для родителей: русский, английский, украинский, немецкий, испанский или польский
+либо как на устройстве, а также фоновая музыка. Весь звук выключает круглая кнопка звука на поляне —
+одним касанием.</p>
+
+<h2>Как сделать, чтобы малыш не вышел из игры?</h2>
+<p>Закрепите экран встроенным замком телефона: «Гид-доступ» на iPhone и iPad или «Закрепление
+приложений» на Android. Шаги описаны на странице для родителей в пункте «Закрепить экран». Пока
+экран закреплён, ни жест, ни кнопка не закроют приложение, пока вы не введёте код.</p>
+
+<h2>Откуда на поляне большая ёлка?</h2>
+<p>С 1 декабря по 14 января поляна становится зимней, а у дуба появляется большая ёлка: коснитесь
+её, чтобы нарядить. Эта праздничная игра бесплатна для всех, а после праздников прячется до
+следующей зимы.</p>
+
+<h2>Как сменить день на ночь?</h2>
+<p>Коснитесь солнца или луны над поляной.</p>
+
+<h2>Какие данные собирает приложение?</h2>
+<p>Никаких: без аккаунтов, рекламы и аналитики, и оно работает без интернета. Подробности — в
+<a href="../privacy/">политике конфиденциальности</a>.</p>
+</section>
+
+<!-- ============================ DEUTSCH ============================ -->
+<section id="de" lang="de" class="faq">
+<h1>Hilfe — Rombik Games</h1>
+<p class="meta">Ruhige Spiele für Kleinkinder mit Vogel Pipit.</p>
+
+<div class="summary contact">
+  <strong>Schreiben Sie uns</strong> bei Fragen, Ideen oder Problemen:
+  <ul>
+    <li>E-Mail: <a href="mailto:daka.kolp01@gmail.com">daka.kolp01@gmail.com</a></li>
+  </ul>
+  Hilfreich ist die Angabe Ihres Geräts (iPhone, iPad oder Android) und der App-Version.
+</div>
+
+<h2>Wie öffne ich die Elternseite?</h2>
+<p>Tippen Sie auf der Wiese auf das runde Zahnrad oben rechts und lösen Sie die einfache
+Rechenaufgabe für Erwachsene. Auf der Seite finden Sie den Kauf, die Sprache, die Musik, wie man den
+Bildschirm fixiert, und Knöpfe, um die App zu bewerten, mit Freunden zu teilen und uns zu schreiben.</p>
+
+<h2>Wie öffne ich alle Spiele?</h2>
+<p>Formen und Größen sind kostenlos. Tippen Sie auf der Elternseite auf „Alle Spiele freischalten“
+und lösen Sie noch eine Aufgabe: Es öffnet sich das Zahlungsfenster des Stores. Es ist ein einmaliger
+Kauf ohne Abo, und später hinzugefügte Spiele öffnen sich damit ebenfalls.</p>
+
+<h2>Ich habe die Spiele gekauft, aber auf einem anderen Gerät sind sie gesperrt</h2>
+<p>Melden Sie sich mit derselben Apple-ID oder demselben Google-Konto an wie beim Kauf, öffnen Sie die
+Elternseite und tippen Sie auf „Käufe abrufen“. Auf iPhone und iPad wird der Kauf außerdem mit Ihrer
+Familienfreigabe geteilt.</p>
+
+<h2>Wie bekomme ich eine Erstattung?</h2>
+<p>Die Zahlung wickelt der Store ab, also auch die Erstattung: im App Store über
+<a href="https://reportaproblem.apple.com">reportaproblem.apple.com</a>, bei Google Play über
+<a href="https://support.google.com/googleplay/answer/2479637?hl=de">die Erstattungsseite von Google Play</a>.</p>
+
+<h2>Wie ändere ich die Sprache oder schalte die Musik aus?</h2>
+<p>Beides auf der Elternseite: Deutsch, Englisch, Ukrainisch, Spanisch, Polnisch oder Russisch oder
+wie auf dem Gerät, dazu die Hintergrundmusik. Den ganzen Ton schaltet der runde Ton-Knopf auf der Wiese
+mit einem Tippen aus.</p>
+
+<h2>Wie verhindere ich, dass mein Kind das Spiel verlässt?</h2>
+<p>Fixieren Sie den Bildschirm mit der Sperre des Geräts: Geführter Zugriff auf iPhone und iPad,
+Bildschirm fixieren auf Android. Die Elternseite zeigt die Schritte unter „Bildschirm fixieren“.
+Solange der Bildschirm fixiert ist, verlässt weder eine Wischgeste noch eine Taste die App, bis Sie
+Ihren Code eingeben.</p>
+
+<h2>Woher kommt der große Tannenbaum auf der Wiese?</h2>
+<p>Vom 1. Dezember bis 14. Januar wird die Wiese winterlich, und neben der Eiche steht ein großer
+Tannenbaum: Tippen Sie darauf, um ihn zu schmücken. Dieses Feiertagsspiel ist für alle kostenlos und
+verschwindet nach den Feiertagen bis zum nächsten Winter.</p>
+
+<h2>Wie wechsle ich zwischen Tag und Nacht?</h2>
+<p>Berühren Sie die Sonne oder den Mond über der Wiese.</p>
+
+<h2>Welche Daten erfasst die App?</h2>
+<p>Keine: keine Konten, keine Werbung, keine Analyse, und sie funktioniert offline. Einzelheiten in der
+<a href="../privacy/">Datenschutzerklärung</a>.</p>
+</section>
+
+<!-- ============================ ESPAÑOL ============================ -->
+<section id="es" lang="es" class="faq">
+<h1>Soporte — Rombik Games</h1>
+<p class="meta">Juegos tranquilos para peques con el pajarito Pipit.</p>
+
+<div class="summary contact">
+  <strong>Escríbanos</strong> con cualquier pregunta, idea o problema:
+  <ul>
+    <li>Correo: <a href="mailto:daka.kolp01@gmail.com">daka.kolp01@gmail.com</a></li>
+  </ul>
+  Ayuda que nos diga qué dispositivo usa (iPhone, iPad o Android) y la versión de la app.
+</div>
+
+<h2>¿Cómo abro la página para padres?</h2>
+<p>En la pradera, toque el botón redondo del engranaje arriba a la derecha y resuelva la suma sencilla
+para adultos. En la página están la compra, el idioma, la música, cómo fijar la pantalla y botones
+para valorar la app, compartirla con amigos y escribirnos.</p>
+
+<h2>¿Cómo abro todos los juegos?</h2>
+<p>Formas y Tamaños son gratis. En la página para padres, toque «Abrir todos los juegos» y resuelva
+una suma más: se abre la ventana de pago de la tienda. Es una sola compra sin suscripción, y los juegos
+que añadamos después también se abren con ella.</p>
+
+<h2>Compré los juegos, pero en otro dispositivo están cerrados</h2>
+<p>Inicie sesión con el mismo Apple ID o la misma cuenta de Google que usó al comprar, abra la página
+para padres y toque «Restaurar compras». En iPhone y iPad la compra también se comparte con su grupo de
+En familia.</p>
+
+<h2>¿Cómo pido un reembolso?</h2>
+<p>El pago lo gestiona la tienda, y el reembolso también: en el App Store a través de
+<a href="https://reportaproblem.apple.com">reportaproblem.apple.com</a>, en Google Play a través de
+<a href="https://support.google.com/googleplay/answer/2479637?hl=es">la página de reembolsos de Google Play</a>.</p>
+
+<h2>¿Cómo cambio el idioma o apago la música?</h2>
+<p>Las dos cosas están en la página para padres: español, inglés, ucraniano, alemán, polaco o ruso, o
+el del dispositivo, y la música de fondo. Todo el sonido se apaga con el botón redondo de sonido de la
+pradera, con un toque.</p>
+
+<h2>¿Cómo evito que mi peque salga del juego?</h2>
+<p>Fije la pantalla con el bloqueo del propio teléfono: Acceso guiado en iPhone y iPad, Fijar
+aplicaciones en Android. La página para padres muestra los pasos en «Fijar la pantalla». Mientras la
+pantalla está fijada, ni un gesto ni un botón salen de la app hasta que introduzca su código.</p>
+
+<h2>¿De dónde salió el gran abeto de la pradera?</h2>
+<p>Del 1 de diciembre al 14 de enero la pradera se vuelve invernal y junto al roble aparece un gran
+abeto: tóquelo para decorar el árbol. Este juego navideño es gratis para todos y, después de las
+fiestas, se va hasta el próximo invierno.</p>
+
+<h2>¿Cómo cambio entre el día y la noche?</h2>
+<p>Toque el sol o la luna sobre la pradera.</p>
+
+<h2>¿Qué datos recoge la app?</h2>
+<p>Ninguno: sin cuentas, sin anuncios, sin analíticas, y funciona sin internet. Más detalles en la
+<a href="../privacy/">política de privacidad</a>.</p>
+</section>
+
+<!-- ============================ POLSKI ============================ -->
+<section id="pl" lang="pl" class="faq">
+<h1>Pomoc — Rombik Games</h1>
+<p class="meta">Spokojne gry dla maluchów z ptaszkiem Pipitem.</p>
+
+<div class="summary contact">
+  <strong>Napisz do nas</strong> z każdym pytaniem, pomysłem lub problemem:
+  <ul>
+    <li>E-mail: <a href="mailto:daka.kolp01@gmail.com">daka.kolp01@gmail.com</a></li>
+  </ul>
+  Przyda się informacja, jakiego urządzenia używasz (iPhone, iPad czy Android), i wersja aplikacji.
+</div>
+
+<h2>Jak otworzyć stronę dla rodziców?</h2>
+<p>Na łące dotknij okrągłego przycisku z kółkiem zębatym w prawym górnym rogu i rozwiąż proste
+działanie dla dorosłych. Na stronie są zakup, język, muzyka, sposób przypięcia ekranu oraz przyciski,
+by ocenić aplikację, udostępnić ją znajomym i napisać do nas.</p>
+
+<h2>Jak otworzyć wszystkie gry?</h2>
+<p>Kształty i Rozmiary są darmowe. Na stronie dla rodziców dotknij „Odblokuj wszystkie gry” i rozwiąż
+jeszcze jedno działanie: otworzy się okno płatności sklepu. To jednorazowy zakup bez subskrypcji, a gry
+dodane później też się z nim otworzą.</p>
+
+<h2>Gry są kupione, ale na innym urządzeniu są zablokowane</h2>
+<p>Zaloguj się tym samym Apple ID lub kontem Google co przy zakupie, otwórz stronę dla rodziców i dotknij
+„Przywróć zakupy”. Na iPhonie i iPadzie zakup jest też udostępniany Twojej grupie Chmury rodzinnej.</p>
+
+<h2>Jak poprosić o zwrot pieniędzy?</h2>
+<p>Płatność obsługuje sklep, więc zwrot również: w App Store przez
+<a href="https://reportaproblem.apple.com">reportaproblem.apple.com</a>, w Google Play przez
+<a href="https://support.google.com/googleplay/answer/2479637?hl=pl">stronę zwrotów Google Play</a>.</p>
+
+<h2>Jak zmienić język albo wyłączyć muzykę?</h2>
+<p>Jedno i drugie jest na stronie dla rodziców: polski, angielski, ukraiński, niemiecki, hiszpański lub
+rosyjski albo jak na urządzeniu, oraz muzyka w tle. Cały dźwięk wyłącza jednym dotknięciem okrągły
+przycisk dźwięku na łące.</p>
+
+<h2>Jak sprawić, żeby dziecko nie wychodziło z gry?</h2>
+<p>Przypnij ekran blokadą samego telefonu: Dostęp nadzorowany na iPhonie i iPadzie, Przypinanie
+aplikacji na Androidzie. Strona dla rodziców pokazuje kroki w części „Przypnij ekran”. Dopóki ekran
+jest przypięty, ani gest, ani przycisk nie wyjdą z aplikacji bez Twojego kodu.</p>
+
+<h2>Skąd na łące duża choinka?</h2>
+<p>Od 1 grudnia do 14 stycznia łąka staje się zimowa, a przy dębie stoi duża choinka: dotknij jej, by
+ją ubrać. Ta świąteczna gra jest darmowa dla wszystkich, a po świętach znika do następnej zimy.</p>
+
+<h2>Jak przełączać dzień i noc?</h2>
+<p>Dotknij słońca albo księżyca nad łąką.</p>
+
+<h2>Jakie dane zbiera aplikacja?</h2>
+<p>Żadnych: bez kont, reklam i analityki, a do tego działa bez internetu. Szczegóły w
+<a href="../privacy/">polityce prywatności</a>.</p>
+</section>
 </main>
 <script>
   (function () {
     var root = document.documentElement;
+    var picker = document.getElementById('lang');
     function setLang(lang) {
       root.setAttribute('data-lang', lang);
       root.setAttribute('lang', lang);
-      document.title = lang === 'uk'
-        ? 'Rombik Games — Підтримка'
-        : 'Rombik Games — Support';
-      document.querySelectorAll('[data-set-lang]').forEach(function (b) {
-        b.setAttribute('aria-pressed', String(b.getAttribute('data-set-lang') === lang));
-      });
+      document.title = { uk: 'Rombik Games — Підтримка', en: 'Rombik Games — Support', ru: 'Rombik Games — Поддержка' , de: 'Rombik Games — Hilfe', es: 'Rombik Games — Soporte', pl: 'Rombik Games — Pomoc' }[lang];
+      picker.value = lang;
       try { localStorage.setItem('lang', lang); } catch (e) {}
     }
+    var known = function (l) { return ['uk', 'en', 'de', 'es', 'pl', 'ru'].indexOf(l) >= 0; };
     var saved = null;
     try { saved = localStorage.getItem('lang'); } catch (e) {}
     var fromUrl = new URLSearchParams(location.search).get('lang');
-    // Old links to #en / #uk still pick their language.
-    var fromHash = location.hash === '#uk' || location.hash === '#en' ? location.hash.slice(1) : null;
-    var browser = (navigator.language || '').toLowerCase().indexOf('uk') === 0 ? 'uk' : 'en';
-    setLang(fromUrl === 'uk' || fromUrl === 'en' ? fromUrl : fromHash || saved || browser);
-    document.querySelectorAll('[data-set-lang]').forEach(function (b) {
-      b.addEventListener('click', function () { setLang(b.getAttribute('data-set-lang')); });
-    });
+    // Old links to #en / #uk (and #ru) still pick their language.
+    var fromHash = known(location.hash.slice(1)) ? location.hash.slice(1) : null;
+    var browser = (navigator.language || '').toLowerCase().slice(0, 2);
+    if (!known(browser)) browser = 'en';
+    setLang(known(fromUrl) ? fromUrl : fromHash || (known(saved) ? saved : null) || browser);
+    picker.addEventListener('change', function () { setLang(picker.value); });
   })();
 </script>
 </body>

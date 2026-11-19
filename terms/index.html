@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="uk" data-lang="uk">
+<html lang="en" data-lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -31,15 +31,24 @@
          font:17px/1.6 "Nunito", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
   main { max-width:760px; margin:0 auto; padding:32px 16px 64px; }
   /* The same header and language switch as the landing page; one language shows at a time. */
-  html[data-lang="uk"] [lang="en"], html[data-lang="en"] [lang="uk"] { display:none !important; }
+  html:not([data-lang="uk"]) [lang="uk"], html:not([data-lang="en"]) [lang="en"], html:not([data-lang="de"]) [lang="de"],
+  html:not([data-lang="es"]) [lang="es"], html:not([data-lang="pl"]) [lang="pl"], html:not([data-lang="ru"]) [lang="ru"] { display:none !important; }
   header.top { display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:24px; }
   .brand { display:flex; align-items:center; gap:10px; font-weight:800; font-size:1.15rem;
            text-decoration:none; color:var(--fg); }
   .brand img { width:40px; height:40px; border-radius:10px; }
-  .langs { display:flex; gap:4px; background:var(--card); border:1px solid var(--line); border-radius:999px; padding:3px; }
-  .langs button { font:inherit; font-weight:700; font-size:.9rem; border:0; background:none; color:var(--muted);
-                  padding:4px 12px; border-radius:999px; cursor:pointer; }
-  .langs button[aria-pressed="true"] { background:var(--orange); color:#fff; }
+  /* The language picker: the browser's own drop-down, drawn as a pill with a chevron. */
+  .langs { position: relative; display: inline-flex; align-items: center; color: var(--muted); }
+  .langs select {
+    appearance: none; -webkit-appearance: none; margin: 0; cursor: pointer;
+    font: inherit; font-weight: 700; font-size: .95rem; color: inherit;
+    background: var(--card); border: 1px solid var(--line); border-radius: 999px; padding: 6px 36px 6px 16px;
+  }
+  .langs select:focus-visible { outline: 2px solid var(--orange); outline-offset: 2px; }
+  .langs::after {
+    content: ""; position: absolute; right: 16px; top: 50%; width: 7px; height: 7px; pointer-events: none;
+    border-right: 2px solid currentColor; border-bottom: 2px solid currentColor; transform: translateY(-70%) rotate(45deg);
+  }
   h1 { font-size:1.9rem; line-height:1.25; margin:0 0 4px; font-weight:800; }
   h2 { font-size:1.15rem; margin:32px 0 8px; font-weight:800; }
   .meta { color:var(--muted); margin:0 0 24px; }
@@ -50,16 +59,23 @@
   table { width:100%; border-collapse:collapse; font-size:.95rem; }
   th, td { text-align:left; padding:8px; border-bottom:1px solid var(--line); vertical-align:top; }
   hr { border:0; border-top:1px solid var(--line); margin:56px 0; }
+  .brand { flex-shrink: 0; white-space: nowrap; }
 </style>
 </head>
 <body>
 <main>
 <header class="top">
   <a class="brand" href="../"><img src="../img/icon.png" alt="" width="40" height="40">Rombik Games</a>
-  <div class="langs" role="group" aria-label="Language / Мова">
-    <button type="button" data-set-lang="uk" aria-pressed="true">UA</button>
-    <button type="button" data-set-lang="en" aria-pressed="false">EN</button>
-  </div>
+  <label class="langs">
+    <select id="lang" aria-label="Language">
+      <option value="en" selected>English</option>
+      <option value="uk">Українська</option>
+      <option value="es">Español</option>
+      <option value="de">Deutsch</option>
+      <option value="pl">Polski</option>
+      <option value="ru">Русский</option>
+    </select>
+  </label>
 </header>
 
 <!-- ============================ ENGLISH ============================ -->
@@ -229,31 +245,379 @@ Google Play</a>. Там, де вони відрізняються від цих 
 <h2>11. Контакти</h2>
 <p>Daria Kolpakova<br>E-mail: <a href="mailto:daka.kolp01@gmail.com">daka.kolp01@gmail.com</a></p>
 </section>
+
+<section id="ru" lang="ru">
+<h1>Условия использования — Rombik Games</h1>
+<p class="meta">Вступают в силу: 5 ноября 2026 года</p>
+
+<div class="summary">
+  <strong>Коротко:</strong>
+  <ul>
+    <li>Часть игр бесплатная, остальные открываются одной покупкой в приложении, без подписки.</li>
+    <li>Покупку обрабатывает Apple или Google, и возврат денег тоже через них.</li>
+    <li>Приложение для игры ребёнка рядом со взрослым; покупки и ссылки наружу — за примером для взрослых.</li>
+    <li>Ваши права потребителя по закону вашей страны действуют всегда.</li>
+  </ul>
+</div>
+
+<h2>1. Кто мы</h2>
+<p>Эти условия относятся к мобильному приложению <strong>Rombik Games</strong> (в App Store и Google Play —
+«Rombik: Игры для малышей»; идентификатор <code>com.rombik.toddlersgame</code>), которое публикует
+<strong>Daria Kolpakova</strong> («мы»). Устанавливая или используя приложение, вы соглашаетесь с
+этими условиями. Если вы не согласны, пожалуйста, не пользуйтесь приложением.</p>
+
+<h2>2. Лицензия</h2>
+<p>Мы предоставляем вам личную неисключительную лицензию без права передачи на использование
+приложения на устройствах, которыми вы владеете или пользуетесь, для частного некоммерческого
+использования, по правилам магазина, из которого вы его получили. Нельзя копировать, перепродавать,
+сдавать в аренду, изменять или распространять приложение, а также использовать его рисунки, музыку
+или звуки где-либо ещё.</p>
+<p>Если вы получили приложение из App Store, также действует
+<a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/">Licensed Application End User
+License Agreement</a> от Apple; если из Google Play — <a href="https://play.google/developer-content-policy/">условия
+Google Play</a>. Там, где они отличаются от этих условий, в вопросах, которые они регулируют,
+преобладают условия магазина.</p>
+
+<h2>3. Бесплатные игры и покупка</h2>
+<ul>
+  <li>Часть игр бесплатная. Остальные открываются разовой покупкой в приложении «Открыть все игры».
+  Это не подписка, и плата никогда не взимается повторно. Игры, добавленные в следующих версиях, тоже
+  открываются вместе с ней.</li>
+  <li>Цену магазин показывает до оплаты, в вашей валюте, вместе с налогами, которые он применяет.</li>
+  <li>Покупку полностью обрабатывает Apple или Google. Мы никогда не видим ваших платёжных данных.</li>
+  <li>Чтобы пользоваться покупкой на другом устройстве, войдите там в тот же Apple ID или аккаунт
+  Google и нажмите «Восстановить покупки» на странице для родителей. На iPhone и iPad покупка также
+  доступна вашей группе «Семейный доступ».</li>
+</ul>
+
+<h2>4. Возврат денег</h2>
+<p>Поскольку оплату принимает магазин, деньги возвращает тоже магазин по своим правилам: в App Store —
+через <a href="https://reportaproblem.apple.com">reportaproblem.apple.com</a>, в Google Play — через
+<a href="https://support.google.com/googleplay/answer/2479637">страницу возврата средств Google Play</a>.
+После возврата денег платные игры снова закрываются. Если что-то работает не так, как описано,
+сначала напишите нам: мы охотно поможем.</p>
+
+<h2>5. Дети и родители</h2>
+<p>Приложение создано для игры малышей под присмотром родителей или другого ответственного взрослого.
+Покупки, настройки и все ссылки наружу находятся в разделе для родителей, который открывается только
+после простого примера для взрослых. Как мы обращаемся с данными, описано в
+<a href="../privacy/">политике конфиденциальности</a>: коротко, приложение не собирает персональных данных.</p>
+
+<h2>6. Права собственности</h2>
+<p>Приложение, его игры, рисунки, персонажи (в том числе птичка Пипит), музыка и звуки принадлежат нам.
+Эти условия дают вам лицензию на их использование в приложении, а не право собственности на них.</p>
+
+<h2>7. Обновления и доступность</h2>
+<p>Мы можем обновлять приложение, чтобы исправить ошибки, добавить игры или изменить внешний вид.
+Часть содержимого, например сезонная игра, может появляться только в определённое время года. Мы
+стараемся поддерживать работу на актуальных версиях iOS и Android, но не можем гарантировать работу
+на каждом устройстве.</p>
+
+<h2>8. Ответственность</h2>
+<p>Мы делаем приложение бережно, но оно предоставляется «как есть». Насколько это позволяет закон, мы
+не отвечаем за косвенные убытки от его использования. Ничто в этих условиях не ограничивает и не
+исключает ответственности или прав, которые по закону нельзя ограничить или исключить, в том числе
+ваших прав потребителя.</p>
+
+<h2>9. Право</h2>
+<p>Эти условия регулируются правом Украины. Если вы потребитель и живёте в другой стране, за вами
+сохраняется защита обязательных законов о правах потребителей вашей страны, и вы можете обратиться
+в её суд.</p>
+
+<h2>10. Изменения условий</h2>
+<p>Если мы изменим эти условия, мы обновим эту страницу и дату вступления в силу. Изменения не
+отменяют покупки, которую вы уже сделали.</p>
+
+<h2>11. Контакты</h2>
+<p>Daria Kolpakova<br>E-mail: <a href="mailto:daka.kolp01@gmail.com">daka.kolp01@gmail.com</a></p>
+</section>
+
+<!-- ============================ DEUTSCH ============================ -->
+<section id="de" lang="de">
+<h1>Nutzungsbedingungen — Rombik Games</h1>
+<p class="meta">Gültig ab: 5. November 2026</p>
+
+<div class="summary">
+  <strong>Kurz gesagt:</strong>
+  <ul>
+    <li>Einige Spiele sind kostenlos; die übrigen öffnet ein einziger Kauf in der App, ohne Abo.</li>
+    <li>Den Kauf wickelt Apple oder Google ab, und Erstattungen laufen ebenfalls über sie.</li>
+    <li>Die App ist zum Spielen für ein Kind mit Eltern in der Nähe; Käufe und Links nach außen liegen hinter einer Rechenaufgabe für Erwachsene.</li>
+    <li>Ihre Rechte als Verbraucher nach dem Recht Ihres Landes gelten immer.</li>
+  </ul>
+</div>
+
+<h2>1. Wer wir sind</h2>
+<p>Diese Bedingungen gelten für die mobile App <strong>Rombik Games</strong> (im App Store und bei Google Play
+als „Rombik: Spiele für Kleinkinder“; Bundle-ID <code>com.rombik.toddlersgame</code>), herausgegeben von
+<strong>Daria Kolpakova</strong> („wir“, „uns“). Mit der Installation oder Nutzung der App stimmen Sie diesen
+Bedingungen zu. Wenn Sie nicht zustimmen, nutzen Sie die App bitte nicht.</p>
+
+<h2>2. Lizenz</h2>
+<p>Wir gewähren Ihnen eine persönliche, nicht ausschließliche, nicht übertragbare Lizenz, die App auf Geräten,
+die Sie besitzen oder nutzen, für private, nicht kommerzielle Zwecke nach den Regeln des Stores zu
+verwenden, aus dem Sie sie haben. Sie dürfen die App nicht kopieren, weiterverkaufen, vermieten, verändern
+oder weiterverbreiten und ihre Bilder, Musik oder Töne nicht anderswo verwenden.</p>
+<p>Haben Sie die App aus dem App Store, gilt außerdem Apples
+<a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/">Licensed Application End User
+License Agreement</a>; aus Google Play gelten die
+<a href="https://play.google/developer-content-policy/">Bedingungen von Google Play</a>. Wo sie von diesen
+Bedingungen abweichen, haben die Bedingungen des Stores in den Fragen Vorrang, die sie regeln.</p>
+
+<h2>3. Kostenlose Spiele und der Kauf</h2>
+<ul>
+  <li>Einige Spiele sind kostenlos. Die anderen öffnet ein einmaliger Kauf in der App, „Alle Spiele
+  freischalten“. Er ist kein Abo und wird nie erneut berechnet. Spiele, die in späteren Versionen
+  hinzukommen, öffnen sich damit ebenfalls.</li>
+  <li>Den Preis zeigt der Store vor der Zahlung in Ihrer Währung an, einschließlich der Steuern, die der
+  Store berechnet.</li>
+  <li>Den Kauf wickelt vollständig Apple oder Google ab. Wir sehen Ihre Zahlungsdaten nie.</li>
+  <li>Um den Kauf auf einem anderen Gerät zu nutzen, melden Sie sich dort mit derselben Apple-ID oder
+  demselben Google-Konto an und tippen auf der Elternseite auf „Käufe abrufen“. Auf iPhone und iPad wird er
+  außerdem mit Ihrer Familienfreigabe geteilt.</li>
+</ul>
+
+<h2>4. Erstattungen</h2>
+<p>Da der Store die Zahlung entgegennimmt, erstattet auch der Store nach seinen Regeln: im App Store über
+<a href="https://reportaproblem.apple.com">reportaproblem.apple.com</a>, bei Google Play über
+<a href="https://support.google.com/googleplay/answer/2479637?hl=de">die Erstattungsseite von Google Play</a>.
+Wird ein Kauf erstattet, schließen sich die bezahlten Spiele wieder. Wenn etwas nicht wie beschrieben
+funktioniert, schreiben Sie uns zuerst: Wir helfen gern.</p>
+
+<h2>5. Kinder und Eltern</h2>
+<p>Die App ist zum Spielen für kleine Kinder gemacht, mit Eltern oder anderen Erwachsenen, die für sie
+verantwortlich sind. Käufe, Einstellungen und jeder Link aus der App heraus liegen im Elternbereich, der sich
+erst nach einer einfachen Rechenaufgabe für Erwachsene öffnet. Wie wir mit Daten umgehen, beschreibt unsere
+<a href="../privacy/">Datenschutzerklärung</a>: Kurz gesagt erfasst die App keine personenbezogenen Daten.</p>
+
+<h2>6. Eigentum</h2>
+<p>Die App, ihre Spiele, Bilder, Figuren (einschließlich Vogel Pipit), Musik und Töne gehören uns. Diese
+Bedingungen geben Ihnen eine Lizenz, sie in der App zu nutzen, kein Eigentum daran.</p>
+
+<h2>7. Updates und Verfügbarkeit</h2>
+<p>Wir können die App aktualisieren, um Fehler zu beheben, Spiele hinzuzufügen oder ihr Aussehen zu ändern.
+Manche Inhalte, etwa ein saisonales Spiel, erscheinen nur zu bestimmten Zeiten im Jahr. Wir bemühen uns, dass
+die App auf aktuellen Versionen von iOS und Android läuft, können aber nicht versprechen, dass sie auf jedem
+Gerät funktioniert.</p>
+
+<h2>8. Haftung</h2>
+<p>Wir machen die App mit Sorgfalt, sie wird aber „wie besehen“ bereitgestellt. Soweit gesetzlich zulässig,
+haften wir nicht für mittelbare Schäden aus ihrer Nutzung. Nichts in diesen Bedingungen beschränkt oder
+schließt eine Haftung oder ein Recht aus, das gesetzlich nicht beschränkt oder ausgeschlossen werden kann,
+einschließlich Ihrer gesetzlichen Verbraucherrechte.</p>
+
+<h2>9. Recht</h2>
+<p>Für diese Bedingungen gilt das Recht der Ukraine. Wenn Sie als Verbraucher anderswo leben, behalten Sie
+den Schutz der zwingenden Verbraucherschutzgesetze Ihres Landes und können vor dessen Gerichten klagen.</p>
+
+<h2>10. Änderungen dieser Bedingungen</h2>
+<p>Wenn wir diese Bedingungen ändern, aktualisieren wir diese Seite und das obige Datum. Änderungen nehmen
+Ihnen keinen bereits getätigten Kauf.</p>
+
+<h2>11. Kontakt</h2>
+<p>Daria Kolpakova<br>E-Mail: <a href="mailto:daka.kolp01@gmail.com">daka.kolp01@gmail.com</a></p>
+
+<p class="meta">Diese Übersetzung dient der Information. Bei Abweichungen gilt die englische Fassung.</p>
+</section>
+
+<!-- ============================ ESPAÑOL ============================ -->
+<section id="es" lang="es">
+<h1>Condiciones de uso — Rombik Games</h1>
+<p class="meta">Fecha de entrada en vigor: 5 de noviembre de 2026</p>
+
+<div class="summary">
+  <strong>En resumen:</strong>
+  <ul>
+    <li>Algunos juegos son gratis; el resto se abre con una sola compra dentro de la app, sin suscripción.</li>
+    <li>La compra la gestiona Apple o Google, y los reembolsos también pasan por ellos.</li>
+    <li>La app es para que un niño juegue con un adulto cerca; las compras y los enlaces externos están detrás de una suma para adultos.</li>
+    <li>Sus derechos como consumidor según la ley de su país se aplican siempre.</li>
+  </ul>
+</div>
+
+<h2>1. Quiénes somos</h2>
+<p>Estas condiciones se aplican a la app móvil <strong>Rombik Games</strong> (publicada en el App Store y en
+Google Play como «Rombik: Juegos para niños»; identificador <code>com.rombik.toddlersgame</code>), publicada
+por <strong>Daria Kolpakova</strong> («nosotros»). Al instalar o usar la app, acepta estas condiciones. Si no
+está de acuerdo, por favor no use la app.</p>
+
+<h2>2. Licencia</h2>
+<p>Le concedemos una licencia personal, no exclusiva e intransferible para usar la app en dispositivos que
+posea o use, con fines privados y no comerciales, según las normas de la tienda de la que la obtuvo. No puede
+copiar, revender, alquilar, modificar ni redistribuir la app, ni usar en otro lugar sus dibujos, música o
+sonidos.</p>
+<p>Si obtuvo la app del App Store, también se aplica el
+<a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/">Licensed Application End User
+License Agreement</a> de Apple; si la obtuvo de Google Play, se aplican las
+<a href="https://play.google/developer-content-policy/">condiciones de Google Play</a>. Donde difieran de
+estas condiciones, prevalecen las de la tienda en los asuntos que regulan.</p>
+
+<h2>3. Juegos gratis y la compra</h2>
+<ul>
+  <li>Algunos juegos son gratis. Los demás se abren con una compra única dentro de la app, «Abrir todos los
+  juegos». No es una suscripción y nunca se vuelve a cobrar. Los juegos añadidos en versiones posteriores
+  también se abren con ella.</li>
+  <li>El precio lo muestra la tienda antes de pagar, en su moneda, con los impuestos que aplique la
+  tienda.</li>
+  <li>La compra la gestiona por completo Apple o Google. Nunca vemos sus datos de pago.</li>
+  <li>Para usar la compra en otro dispositivo, inicie sesión allí con el mismo Apple ID o la misma cuenta de
+  Google y toque «Restaurar compras» en la página para padres. En iPhone y iPad también se comparte con su
+  grupo de En familia.</li>
+</ul>
+
+<h2>4. Reembolsos</h2>
+<p>Como el pago lo recibe la tienda, los reembolsos los hace la tienda según sus normas: en el App Store a
+través de <a href="https://reportaproblem.apple.com">reportaproblem.apple.com</a>, en Google Play a través de
+<a href="https://support.google.com/googleplay/answer/2479637?hl=es">la página de reembolsos de Google Play</a>.
+Cuando se reembolsa una compra, los juegos de pago vuelven a cerrarse. Si algo no funciona como se describe,
+escríbanos primero: le ayudaremos con gusto.</p>
+
+<h2>5. Niños y padres</h2>
+<p>La app está hecha para que jueguen niños pequeños, con un padre, una madre u otro adulto responsable de
+ellos. Las compras, los ajustes y todos los enlaces que salen de la app están en la zona para padres, que se
+abre solo tras una suma sencilla para adultos. Cómo tratamos los datos se describe en nuestra
+<a href="../privacy/">política de privacidad</a>: en resumen, la app no recoge datos personales.</p>
+
+<h2>6. Propiedad</h2>
+<p>La app, sus juegos, dibujos, personajes (incluido el pajarito Pipit), música y sonidos nos pertenecen.
+Estas condiciones le dan una licencia para usarlos en la app, no la propiedad sobre ellos.</p>
+
+<h2>7. Actualizaciones y disponibilidad</h2>
+<p>Podemos actualizar la app para corregir problemas, añadir juegos o cambiar su aspecto. Algunos contenidos,
+como un juego de temporada, pueden aparecer solo en ciertas épocas del año. Intentamos que la app funcione en
+las versiones actuales de iOS y Android, pero no podemos prometer que funcione en todos los
+dispositivos.</p>
+
+<h2>8. Responsabilidad</h2>
+<p>Hacemos la app con cuidado, pero se ofrece «tal cual». En la medida en que la ley lo permita, no somos
+responsables de pérdidas indirectas derivadas de su uso. Nada en estas condiciones limita ni excluye ninguna
+responsabilidad o derecho que la ley no permita limitar o excluir, incluidos sus derechos legales como
+consumidor.</p>
+
+<h2>9. Ley aplicable</h2>
+<p>Estas condiciones se rigen por la ley de Ucrania. Si es un consumidor que vive en otro país, conserva la
+protección de las leyes de consumo obligatorias de su país y puede presentar una reclamación ante sus
+tribunales.</p>
+
+<h2>10. Cambios en estas condiciones</h2>
+<p>Si cambiamos estas condiciones, actualizaremos esta página y la fecha de arriba. Los cambios no le quitan
+una compra que ya haya hecho.</p>
+
+<h2>11. Contacto</h2>
+<p>Daria Kolpakova<br>Correo: <a href="mailto:daka.kolp01@gmail.com">daka.kolp01@gmail.com</a></p>
+
+<p class="meta">Esta traducción es informativa. Si hay diferencias, prevalece la versión en inglés.</p>
+</section>
+
+<!-- ============================ POLSKI ============================ -->
+<section id="pl" lang="pl">
+<h1>Warunki korzystania — Rombik Games</h1>
+<p class="meta">Obowiązują od: 5 listopada 2026 r.</p>
+
+<div class="summary">
+  <strong>W skrócie:</strong>
+  <ul>
+    <li>Część gier jest darmowa; pozostałe otwiera jeden zakup w aplikacji, bez subskrypcji.</li>
+    <li>Zakup obsługuje Apple lub Google, a zwroty również przechodzą przez nich.</li>
+    <li>Aplikacja jest do zabawy dla dziecka, gdy w pobliżu jest dorosły; zakupy i linki na zewnątrz są za działaniem dla dorosłych.</li>
+    <li>Twoje prawa konsumenta wynikające z prawa Twojego kraju obowiązują zawsze.</li>
+  </ul>
+</div>
+
+<h2>1. Kim jesteśmy</h2>
+<p>Te warunki dotyczą aplikacji mobilnej <strong>Rombik Games</strong> (w App Store i Google Play jako
+„Rombik: Gry dla małych dzieci”; identyfikator <code>com.rombik.toddlersgame</code>), wydawanej przez
+<strong>Darię Kolpakovą</strong> („my”). Instalując aplikację lub korzystając z niej, akceptujesz te warunki.
+Jeśli się z nimi nie zgadzasz, prosimy, nie korzystaj z aplikacji.</p>
+
+<h2>2. Licencja</h2>
+<p>Udzielamy Ci osobistej, niewyłącznej i niezbywalnej licencji na korzystanie z aplikacji na urządzeniach,
+które posiadasz lub których używasz, do prywatnego, niekomercyjnego użytku, zgodnie z zasadami sklepu, z
+którego ją pobrano. Nie wolno kopiować, odsprzedawać, wynajmować, zmieniać ani rozpowszechniać aplikacji ani
+używać gdzie indziej jej obrazków, muzyki czy dźwięków.</p>
+<p>Jeśli aplikacja pochodzi z App Store, obowiązuje też
+<a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/">Licensed Application End User
+License Agreement</a> firmy Apple; jeśli z Google Play –
+<a href="https://play.google/developer-content-policy/">warunki Google Play</a>. Tam, gdzie różnią się od
+tych warunków, w sprawach, które regulują, pierwszeństwo mają warunki sklepu.</p>
+
+<h2>3. Darmowe gry i zakup</h2>
+<ul>
+  <li>Część gier jest darmowa. Pozostałe otwiera jednorazowy zakup w aplikacji „Odblokuj wszystkie gry”.
+  Nie jest to subskrypcja i nigdy nie jest pobierana ponownie. Gry dodane w późniejszych wersjach też się z
+  nim otwierają.</li>
+  <li>Cenę pokazuje sklep przed zapłatą, w Twojej walucie, z podatkami naliczanymi przez sklep.</li>
+  <li>Zakup w całości obsługuje Apple lub Google. Nigdy nie widzimy Twoich danych płatniczych.</li>
+  <li>Aby korzystać z zakupu na innym urządzeniu, zaloguj się tam tym samym Apple ID lub kontem Google i
+  dotknij „Przywróć zakupy” na stronie dla rodziców. Na iPhonie i iPadzie zakup jest też udostępniany Twojej
+  grupie Chmury rodzinnej.</li>
+</ul>
+
+<h2>4. Zwroty</h2>
+<p>Ponieważ płatność przyjmuje sklep, zwrotów dokonuje sklep według swoich zasad: w App Store przez
+<a href="https://reportaproblem.apple.com">reportaproblem.apple.com</a>, w Google Play przez
+<a href="https://support.google.com/googleplay/answer/2479637?hl=pl">stronę zwrotów Google Play</a>. Po zwrocie
+zakupu płatne gry znów się zamykają. Jeśli coś nie działa tak, jak opisano, najpierw napisz do nas: chętnie
+pomożemy.</p>
+
+<h2>5. Dzieci i rodzice</h2>
+<p>Aplikacja jest stworzona do zabawy dla małych dzieci, pod opieką rodzica lub innej odpowiedzialnej za nie
+osoby dorosłej. Zakupy, ustawienia i każdy link prowadzący poza aplikację są w strefie dla rodziców, która
+otwiera się dopiero po rozwiązaniu prostego działania dla dorosłych. Sposób postępowania z danymi opisuje
+nasza <a href="../privacy/">polityka prywatności</a>: w skrócie, aplikacja nie zbiera danych osobowych.</p>
+
+<h2>6. Własność</h2>
+<p>Aplikacja, jej gry, obrazki, postacie (w tym ptaszek Pipit), muzyka i dźwięki należą do nas. Te warunki
+dają Ci licencję na korzystanie z nich w aplikacji, a nie prawo własności do nich.</p>
+
+<h2>7. Aktualizacje i dostępność</h2>
+<p>Możemy aktualizować aplikację, aby naprawiać błędy, dodawać gry lub zmieniać jej wygląd. Niektóre treści,
+na przykład gra sezonowa, mogą pojawiać się tylko w określonych porach roku. Staramy się, aby aplikacja
+działała na aktualnych wersjach iOS i Androida, ale nie możemy obiecać, że będzie działać na każdym
+urządzeniu.</p>
+
+<h2>8. Odpowiedzialność</h2>
+<p>Tworzymy aplikację starannie, ale jest ona udostępniana „w stanie, w jakim jest”. W zakresie dozwolonym
+przez prawo nie odpowiadamy za szkody pośrednie wynikające z jej używania. Nic w tych warunkach nie ogranicza
+ani nie wyłącza odpowiedzialności ani praw, których prawo nie pozwala ograniczyć ani wyłączyć, w tym Twoich
+ustawowych praw konsumenta.</p>
+
+<h2>9. Prawo właściwe</h2>
+<p>Te warunki podlegają prawu Ukrainy. Jeśli jesteś konsumentem mieszkającym w innym kraju, zachowujesz
+ochronę bezwzględnie obowiązujących przepisów konsumenckich swojego kraju i możesz dochodzić roszczeń przed
+jego sądami.</p>
+
+<h2>10. Zmiany tych warunków</h2>
+<p>Jeśli zmienimy te warunki, zaktualizujemy tę stronę i datę powyżej. Zmiany nie odbierają Ci już
+dokonanego zakupu.</p>
+
+<h2>11. Kontakt</h2>
+<p>Daria Kolpakova<br>E-mail: <a href="mailto:daka.kolp01@gmail.com">daka.kolp01@gmail.com</a></p>
+
+<p class="meta">To tłumaczenie ma charakter informacyjny. W razie rozbieżności obowiązuje wersja angielska.</p>
+</section>
 </main>
 <script>
   (function () {
     var root = document.documentElement;
+    var picker = document.getElementById('lang');
     function setLang(lang) {
       root.setAttribute('data-lang', lang);
       root.setAttribute('lang', lang);
-      document.title = lang === 'uk'
-        ? 'Rombik Games — Умови використання'
-        : 'Rombik Games — Terms of Use';
-      document.querySelectorAll('[data-set-lang]').forEach(function (b) {
-        b.setAttribute('aria-pressed', String(b.getAttribute('data-set-lang') === lang));
-      });
+      document.title = { uk: 'Rombik Games — Умови використання', en: 'Rombik Games — Terms of Use', ru: 'Rombik Games — Условия использования' , de: 'Rombik Games — Nutzungsbedingungen', es: 'Rombik Games — Condiciones de uso', pl: 'Rombik Games — Warunki korzystania' }[lang];
+      picker.value = lang;
       try { localStorage.setItem('lang', lang); } catch (e) {}
     }
+    var known = function (l) { return ['uk', 'en', 'de', 'es', 'pl', 'ru'].indexOf(l) >= 0; };
     var saved = null;
     try { saved = localStorage.getItem('lang'); } catch (e) {}
     var fromUrl = new URLSearchParams(location.search).get('lang');
-    // Old links to #en / #uk still pick their language.
-    var fromHash = location.hash === '#uk' || location.hash === '#en' ? location.hash.slice(1) : null;
-    var browser = (navigator.language || '').toLowerCase().indexOf('uk') === 0 ? 'uk' : 'en';
-    setLang(fromUrl === 'uk' || fromUrl === 'en' ? fromUrl : fromHash || saved || browser);
-    document.querySelectorAll('[data-set-lang]').forEach(function (b) {
-      b.addEventListener('click', function () { setLang(b.getAttribute('data-set-lang')); });
-    });
+    // Old links to #en / #uk (and #ru) still pick their language.
+    var fromHash = known(location.hash.slice(1)) ? location.hash.slice(1) : null;
+    var browser = (navigator.language || '').toLowerCase().slice(0, 2);
+    if (!known(browser)) browser = 'en';
+    setLang(known(fromUrl) ? fromUrl : fromHash || (known(saved) ? saved : null) || browser);
+    picker.addEventListener('change', function () { setLang(picker.value); });
   })();
 </script>
 </body>
